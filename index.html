@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="CUuW2wqk-GGMdnmhhMBezpl92aeu7r4u0TBAdNXfLnE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greeting Cards Creator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="shared.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap');
         
@@ -84,18 +84,22 @@
                 </div>
                 
                 <nav class="hidden md:flex space-x-8">
-                    <button onclick="showPage('home')" class="nav-btn flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    <a href="#home" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
                         <i class="fas fa-home w-4 h-4"></i>
                         <span>Home</span>
-                    </button>
-                    <button onclick="showPage('gallery')" class="nav-btn flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    </a>
+                    <a href="#gallery" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
                         <i class="fas fa-image w-4 h-4"></i>
                         <span>Gallery</span>
-                    </button>
-                    <button onclick="showPage('editor')" class="nav-btn flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    </a>
+                    <a href="#editor" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
                         <i class="fas fa-palette w-4 h-4"></i>
                         <span>Create</span>
-                    </button>
+                    </a>
+                    <a href="blog.html" class="nav-link flex items-center space-x-2 text-purple-600 font-semibold">
+                        <i class="fas fa-blog w-4 h-4"></i>
+                        <span>Blog</span>
+                    </a>
                 </nav>
 
                 <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700">
@@ -107,9 +111,10 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="px-6 py-4 space-y-3">
-                <button onclick="showPage('home'); toggleMobileMenu()" class="block w-full text-left text-gray-700 hover:text-purple-600">Home</button>
-                <button onclick="showPage('gallery'); toggleMobileMenu()" class="block w-full text-left text-gray-700 hover:text-purple-600">Gallery</button>
-                <button onclick="showPage('editor'); toggleMobileMenu()" class="block w-full text-left text-gray-700 hover:text-purple-600">Create</button>
+                <a href="#home" class="block text-gray-700 hover:text-purple-600">Home</a>
+                <a href="#gallery" class="block text-gray-700 hover:text-purple-600">Gallery</a>
+                <a href="#editor" class="block text-gray-700 hover:text-purple-600">Create</a>
+                <a href="blog.html" class="block text-purple-600 font-semibold">Blog</a>
             </div>
         </div>
     </header>
@@ -170,6 +175,24 @@
                 <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Choose a Template</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="templateGrid">
                     <!-- Templates will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Blog Section -->
+            <div class="py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text">Latest from Our Blog</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Expert tips, creative ideas, and inspiration for crafting perfect greeting cards
+                    </p>
+                    <a href="blog.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300">
+                        View All Posts
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="homeBlogPosts">
+                    <!-- Blog posts will be inserted here -->
                 </div>
             </div>
 
