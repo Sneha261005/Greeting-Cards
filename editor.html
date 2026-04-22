@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Creator - Design Custom Greeting Cards</title>
+    <meta name="description" content="Create beautiful personalized greeting cards with our easy-to-use card editor. Customize colors, fonts, and messages for any occasion.">
+    <meta name="keywords" content="card creator, greeting cards, card design, card maker, custom cards">
+    <meta name="author" content="Greeting Cards Creator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Card Creator - Design Custom Greeting Cards">
+    <meta property="og:description" content="Create beautiful personalized greeting cards with our easy-to-use card editor. Customize colors, fonts, and messages for any occasion.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://greetingcards.com/editor">
+    <meta property="og:image" content="https://greetingcards.com/images/editor-og.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Card Creator - Design Custom Greeting Cards">
+    <meta name="twitter:description" content="Create beautiful personalized greeting cards with our easy-to-use card editor">
+    <meta name="twitter:image" content="https://greetingcards.com/images/editor-twitter.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://greetingcards.com/editor">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Greeting Cards Creator",
+        "description": "Create beautiful personalized greeting cards with our easy-to-use card editor. Customize colors, fonts, and messages for any occasion.",
+        "url": "https://greetingcards.com/editor",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "name": "Free Card Creation",
+            "description": "Create unlimited greeting cards for free with our advanced editor tools."
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Greeting Cards Creator",
+            "url": "https://greetingcards.com"
+        }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-preview {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
+            pointer-events: none;
+        }
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'Roboto Mono', monospace; }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            border-radius: 10px;
+        }
+        
+        .color-option {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.05);
+        }
+        
+        .color-option.selected {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.5);
+        }
+        
+        .text-color-option {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .text-color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .text-color-option.selected {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-heart text-pink-500 text-2xl"></i>
+                        <h1 class="text-2xl font-bold gradient-text">Greeting Cards</h1>
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-home w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="blog.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-blog w-4 h-4"></i>
+                        <span>Blog</span>
+                    </a>
+                    <a href="gallery.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-image w-4 h-4"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="editor.html" class="flex items-center space-x-2 text-purple-600 font-semibold">
+                        <i class="fas fa-palette w-4 h-4"></i>
+                        <span>Create</span>
+                    </a>
+                </nav>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-4 space-y-3">
+                <a href="index.html" class="block text-gray-700 hover:text-purple-600">Home</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-purple-600">Blog</a>
+                <a href="gallery.html" class="block text-gray-700 hover:text-purple-600">Gallery</a>
+                <a href="editor.html" class="block text-purple-600 font-semibold">Create</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">Card Creator</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Design beautiful personalized greeting cards with our powerful and intuitive card editor. 
+                    Choose from templates or start from scratch.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="startFromTemplate()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300">
+                        Choose Template
+                    </button>
+                    <button onclick="startFromScratch()" class="border-2 border-purple-500 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition-all duration-300">
+                        Start from Scratch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editor Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Preview Section -->
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-semibold">Preview</h2>
+                        <div class="flex gap-2">
+                            <button
+                                onclick="togglePreviewMode()"
+                                class="flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition-colors"
+                            >
+                                <i class="fas fa-eye w-4 h-4"></i>
+                                <span id="previewToggleText">Preview Mode</span>
+                            </button>
+                            <button
+                                onclick="downloadCard()"
+                                class="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                            >
+                                <i class="fas fa-download w-4 h-4"></i>
+                                <span>Download</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-preview p-8">
+                        <div id="cardPreview" class="w-full h-96 bg-gradient-to-br from-pink-400 to-purple-400 rounded-xl flex flex-col justify-center items-center p-8 text-center shadow-2xl">
+                            <div id="cardTitle" class="text-2xl font-bold mb-4 text-white">Happy Birthday!</div>
+                            <div id="cardRecipient" class="text-lg mb-6 text-white opacity-90">Dear Friend</div>
+                            <div id="cardMessage" class="text-base mb-6 max-w-md text-white">Wishing you a wonderful day filled with joy and happiness!</div>
+                            <div id="cardSignature" class="text-lg mt-auto text-white">With love,</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editor Controls -->
+                <div>
+                    <div class="bg-white rounded-xl p-6 card-shadow">
+                        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                            <i class="fas fa-font text-purple-600 w-5 h-5"></i>
+                            Text Content
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                                <input
+                                    type="text"
+                                    id="titleInput"
+                                    value="Happy Birthday!"
+                                    oninput="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Recipient</label>
+                                <input
+                                    type="text"
+                                    id="recipientInput"
+                                    value="Dear Friend"
+                                    oninput="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea
+                                    id="messageInput"
+                                    rows="4"
+                                    oninput="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                >Wishing you a wonderful day filled with joy and happiness!</textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Signature</label>
+                                <input
+                                    type="text"
+                                    id="signatureInput"
+                                    value="With love,"
+                                    oninput="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-6 card-shadow mt-6">
+                        <h3 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                            <i class="fas fa-palette text-purple-600 w-5 h-5"></i>
+                            Style Options
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Colors</label>
+                                <div class="grid grid-cols-3 gap-2" id="colorOptions">
+                                    <!-- Color options will be inserted here -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
+                                <div class="flex gap-2" id="textColorOptions">
+                                    <!-- Text color options will be inserted here -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Font Size</label>
+                                <select
+                                    id="fontSizeSelect"
+                                    onchange="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                >
+                                    <option value="text-lg">Small</option>
+                                    <option value="text-xl" selected>Medium</option>
+                                    <option value="text-2xl">Large</option>
+                                    <option value="text-3xl">Extra Large</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Font Family</label>
+                                <select
+                                    id="fontFamilySelect"
+                                    onchange="updateCard()"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                >
+                                    <option value="font-serif">Serif</option>
+                                    <option value="font-sans" selected>Sans-serif</option>
+                                    <option value="font-mono">Monospace</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Modal -->
+    <div id="templatesModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-xl p-8 max-w-4xl mx-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold">Choose a Template</h2>
+                    <button onclick="closeTemplatesModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Template options will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>
