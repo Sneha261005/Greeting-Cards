@@ -18,22 +18,22 @@ document.addEventListener('DOMContentLoaded', function() {
 function initSharedFunctionality() {
     // Set up navigation highlighting
     updateActiveNavigation();
-    
+
     // Initialize mobile menu
     initMobileMenu();
-    
+
     // Add smooth scrolling
     addSmoothScrolling();
-    
+
     // Initialize keyboard shortcuts
     initKeyboardShortcuts();
-    
+
     // Load user preferences
     loadUserPreferences();
-    
+
     // Add page transitions
     addPageTransitions();
-    
+
     // Initialize analytics
     initAnalytics();
 }
@@ -42,7 +42,7 @@ function initSharedFunctionality() {
 function updateActiveNavigation() {
     const currentPage = appState.currentPage;
     const navLinks = document.querySelectorAll('nav a[href], .mobile-menu a[href]');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage || (currentPage === 'index.html' && href === 'index.html')) {
@@ -59,7 +59,7 @@ function updateActiveNavigation() {
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('button[onclick="toggleMobileMenu()"]');
     const mobileMenu = document.getElementById('mobileMenu');
-    
+
     if (mobileMenuBtn && mobileMenu) {
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
@@ -67,7 +67,7 @@ function initMobileMenu() {
                 mobileMenu.classList.add('hidden');
             }
         });
-        
+
         // Close menu on escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
@@ -108,19 +108,19 @@ function initKeyboardShortcuts() {
                 }
             }
         }
-        
-        // Ctrl/Cmd + B for blog
+
+        // Ctrl/Cmd + B for blog (now About)
         if ((event.ctrlKey || event.metaKey) && event.key === 'b') {
             event.preventDefault();
             window.location.href = 'blog.html';
         }
-        
+
         // Ctrl/Cmd + H for home
         if ((event.ctrlKey || event.metaKey) && event.key === 'h') {
             event.preventDefault();
             window.location.href = 'index.html';
         }
-        
+
         // Ctrl/Cmd + E for editor
         if ((event.ctrlKey || event.metaKey) && event.key === 'e') {
             event.preventDefault();
@@ -135,7 +135,7 @@ function loadUserPreferences() {
     if (appState.userPreferences.darkMode) {
         document.body.classList.add('dark-mode');
     }
-    
+
     // Apply font size preference
     if (appState.userPreferences.fontSize) {
         document.body.style.fontSize = appState.userPreferences.fontSize;
@@ -153,21 +153,21 @@ function addPageTransitions() {
     // Add fade-in animation to body
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.3s ease-in';
-    
+
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
-    
+
     // Add transition to all internal links
     document.querySelectorAll('a[href$=".html"]').forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href && !href.startsWith('http') && !href.startsWith('#')) {
                 e.preventDefault();
-                
+
                 // Fade out
                 document.body.style.opacity = '0';
-                
+
                 setTimeout(() => {
                     window.location.href = href;
                 }, 300);
@@ -180,7 +180,7 @@ function addPageTransitions() {
 function initAnalytics() {
     // Track page view
     trackPageView(appState.currentPage);
-    
+
     // Track user interactions
     trackUserInteractions();
 }
@@ -191,7 +191,7 @@ function trackPageView(page) {
     const pageViews = JSON.parse(localStorage.getItem('pageViews') || '{}');
     pageViews[page] = (pageViews[page] || 0) + 1;
     localStorage.setItem('pageViews', JSON.stringify(pageViews));
-    
+
     console.log(`Page view: ${page} (${pageViews[page]} total)`);
 }
 
@@ -205,7 +205,7 @@ function trackUserInteractions() {
             trackInteraction(action);
         });
     });
-    
+
     // Track form submissions
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', function() {
@@ -222,12 +222,12 @@ function trackInteraction(action) {
         page: appState.currentPage,
         timestamp: new Date().toISOString()
     });
-    
+
     // Keep only last 100 interactions
     if (interactions.length > 100) {
         interactions.shift();
     }
-    
+
     localStorage.setItem('interactions', JSON.stringify(interactions));
     console.log(`Interaction tracked: ${action}`);
 }
@@ -236,37 +236,37 @@ function trackInteraction(action) {
 function showNotification(message, type = 'info', duration = 3000) {
     const notification = document.createElement('div');
     notification.className = `fixed top-20 right-4 px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
-    
+
     const colors = {
         success: 'bg-green-500 text-white',
         error: 'bg-red-500 text-white',
         info: 'bg-blue-500 text-white',
         warning: 'bg-yellow-500 text-white'
     };
-    
+
     notification.classList.add(...colors[type].split(' '));
-    
+
     const icons = {
         success: 'fa-check-circle',
         error: 'fa-exclamation-circle',
         info: 'fa-info-circle',
         warning: 'fa-exclamation-triangle'
     };
-    
+
     notification.innerHTML = `
         <div class="flex items-center gap-2">
             <i class="fas ${icons[type]}"></i>
             <span>${message}</span>
         </div>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Remove after duration
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
@@ -285,12 +285,12 @@ function saveCardToRecent(cardData) {
         ...cardData,
         timestamp: new Date().toISOString()
     });
-    
+
     // Keep only last 10 recent cards
     if (recentCards.length > 10) {
         recentCards.pop();
     }
-    
+
     appState.recentCards = recentCards;
     localStorage.setItem('recentCards', JSON.stringify(recentCards));
 }
@@ -301,10 +301,10 @@ function saveCardToFavorites(cardData) {
         ...cardData,
         timestamp: new Date().toISOString()
     });
-    
+
     appState.favoriteCards = favorites;
     localStorage.setItem('favoriteCards', JSON.stringify(favorites));
-    
+
     showNotification('Card added to favorites!', 'success');
 }
 
@@ -312,7 +312,7 @@ function removeCardFromFavorites(cardId) {
     const favorites = appState.favoriteCards.filter(card => card.id !== cardId);
     appState.favoriteCards = favorites;
     localStorage.setItem('favoriteCards', JSON.stringify(favorites));
-    
+
     showNotification('Card removed from favorites', 'info');
 }
 
@@ -323,7 +323,7 @@ function performSearch(query, context = 'all') {
         blogPosts: [],
         templates: []
     };
-    
+
     // Search cards (if gallery data is available)
     if (typeof galleryCards !== 'undefined') {
         searchResults.cards = galleryCards.filter(card => 
@@ -332,7 +332,7 @@ function performSearch(query, context = 'all') {
             card.category.toLowerCase().includes(query.toLowerCase())
         );
     }
-    
+
     // Search blog posts (if blog data is available)
     if (typeof blogPosts !== 'undefined') {
         searchResults.blogPosts = blogPosts.filter(post => 
@@ -341,7 +341,7 @@ function performSearch(query, context = 'all') {
             post.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
         );
     }
-    
+
     // Search templates (if template data is available)
     if (typeof cardTemplates !== 'undefined') {
         searchResults.templates = cardTemplates.filter(template => 
@@ -349,7 +349,7 @@ function performSearch(query, context = 'all') {
             template.occasion.toLowerCase().includes(query.toLowerCase())
         );
     }
-    
+
     return searchResults;
 }
 
