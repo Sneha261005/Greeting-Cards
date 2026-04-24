@@ -8,23 +8,23 @@
     <meta name="keywords" content="greeting cards, card gallery, card templates, birthday cards, holiday cards, card design">
     <meta name="author" content="Greeting Cards Creator">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Card Gallery - Browse Greeting Cards">
     <meta property="og:description" content="Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion with search and category filters.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://greetingcards.com/gallery">
     <meta property="og:image" content="https://greetingcards.com/images/gallery-og.jpg">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Card Gallery - Browse Greeting Cards">
     <meta name="twitter:description" content="Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion.">
     <meta name="twitter:image" content="https://greetingcards.com/images/gallery-twitter.jpg">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://greetingcards.com/gallery">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -73,42 +73,42 @@
         }
     }
     </script>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
-        
+
         * {
             font-family: 'Inter', sans-serif;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .card-shadow {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .hover-lift {
             transition: all 0.3s ease;
         }
-        
+
         .hover-lift:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .gallery-card {
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
-        
+
         .gallery-card::before {
             content: '';
             position: absolute;
@@ -120,11 +120,11 @@
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
-        
+
         .gallery-card:hover::before {
             transform: scaleX(1);
         }
-        
+
         .category-tag {
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
             color: white;
@@ -135,25 +135,25 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .fade-in {
             animation: fadeIn 0.6s ease-in;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
         }
-        
+
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
             border-radius: 10px;
@@ -171,15 +171,15 @@
                         <h1 class="text-2xl font-bold gradient-text">Greeting Cards</h1>
                     </a>
                 </div>
-                
+
                 <nav class="hidden md:flex space-x-8">
                     <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
                         <i class="fas fa-home w-4 h-4"></i>
                         <span>Home</span>
                     </a>
                     <a href="blog.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
-                        <i class="fas fa-blog w-4 h-4"></i>
-                        <span>Blog</span>
+                        <i class="fas fa-info-circle w-4 h-4"></i>
+                        <span>About</span>
                     </a>
                     <a href="gallery.html" class="flex items-center space-x-2 text-purple-600 font-semibold">
                         <i class="fas fa-image w-4 h-4"></i>
@@ -196,12 +196,12 @@
                 </button>
             </div>
         </div>
-        
+
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="px-6 py-4 space-y-3">
                 <a href="index.html" class="block text-gray-700 hover:text-purple-600">Home</a>
-                <a href="blog.html" class="block text-gray-700 hover:text-purple-600">Blog</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-purple-600">About</a>
                 <a href="gallery.html" class="block text-purple-600 font-semibold">Gallery</a>
                 <a href="editor.html" class="block text-gray-700 hover:text-purple-600">Create</a>
             </div>
@@ -219,43 +219,40 @@
                     Browse our beautiful collection of greeting card templates. 
                     Find the perfect card for any occasion with our advanced search and filtering options.
                 </p>
-                
+
                 <!-- Search Bar -->
                 <div class="max-w-2xl mx-auto mb-8">
                     <div class="relative">
                         <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
                         <input
                             type="text"
-                            id="searchInput"
-                            placeholder="Search cards..."
+                            id="gallerySearch"
+                            placeholder="Search cards by name, category, or style..."
                             onkeyup="searchCards()"
                             class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         />
                     </div>
                 </div>
-                
+
                 <!-- Category Filters -->
                 <div class="flex flex-wrap justify-center gap-3 mb-8" id="categoryFilters">
-                    <button onclick="filterByCategory('all')" data-category="all" class="category-btn px-4 py-2 rounded-lg transition-colors bg-purple-500 text-white">
+                    <button onclick="filterByCategory('all')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-purple-500 text-white">
                         All Cards
                     </button>
-                    <button onclick="filterByCategory('birthday')" data-category="birthday" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <button onclick="filterByCategory('birthday')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
                         Birthday
                     </button>
-                    <button onclick="filterByCategory('holiday')" data-category="holiday" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <button onclick="filterByCategory('love')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Love & Romance
+                    </button>
+                    <button onclick="filterByCategory('holiday')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
                         Holiday
                     </button>
-                    <button onclick="filterByCategory('love')" data-category="love" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Love
-                    </button>
-                    <button onclick="filterByCategory('congratulations')" data-category="congratulations" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Congratulations
-                    </button>
-                    <button onclick="filterByCategory('thankyou')" data-category="thankyou" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    <button onclick="filterByCategory('thank-you')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
                         Thank You
                     </button>
-                    <button onclick="filterByCategory('getwell')" data-category="getwell" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Get Well Soon
+                    <button onclick="filterByCategory('congratulations')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Congratulations
                     </button>
                 </div>
             </div>
@@ -265,39 +262,17 @@
     <!-- Gallery Grid -->
     <section class="py-12">
         <div class="container mx-auto px-6">
-            <!-- Results Count -->
-            <div class="mb-6">
-                <p class="text-gray-600" id="resultsCount">Showing 0 cards</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="galleryGrid">
+                <!-- Gallery cards will be inserted here by JavaScript -->
             </div>
 
-            <!-- No Results -->
-            <div id="noResults" class="text-center py-12" style="display: none;">
-                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-search text-gray-400 text-3xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">No cards found</h3>
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-12 hidden">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No cards found</h3>
                 <p class="text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
 
-            <!-- Featured Cards -->
-            <div id="featuredSection" class="mb-12" style="display: none;">
-                <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <i class="fas fa-star text-yellow-500"></i>
-                    Featured Cards
-                </h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="featuredCards">
-                    <!-- Featured cards will be inserted here -->
-                </div>
-            </div>
-
-            <!-- All Cards -->
-            <div id="allCardsSection">
-                <h2 class="text-2xl font-bold mb-6">All Cards</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryGrid">
-                    <!-- Gallery cards will be inserted here -->
-                </div>
-            </div>
-            
             <!-- Load More Button -->
             <div class="text-center mt-12">
                 <button onclick="loadMoreCards()" class="bg-white border-2 border-purple-500 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition-all duration-300">
@@ -307,29 +282,13 @@
         </div>
     </section>
 
-    <!-- Featured Cards Section -->
+    <!-- Newsletter Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 gradient-text">Featured Cards</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Hand-picked selection of our most popular and creative greeting card designs
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Featured cards will be inserted here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-6">
-            <div class="max-w-2xl mx-auto text-center bg-white rounded-2xl p-12 shadow-lg">
+            <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-4 gradient-text">Get Inspired</h2>
                 <p class="text-gray-600 mb-8">
-                    Sign up for our newsletter to receive the latest greeting card trends, exclusive templates, and creative tips delivered to your inbox.
+                    Receive weekly design inspiration and exclusive card templates delivered to your inbox
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                     <input
@@ -358,17 +317,17 @@
                         Create beautiful personalized greeting cards for every occasion with our easy-to-use tools.
                     </p>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">About</a></li>
                         <li><a href="gallery.html" class="hover:text-white transition-colors">Gallery</a></li>
                         <li><a href="editor.html" class="hover:text-white transition-colors">Create</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Categories</h4>
                     <ul class="space-y-2 text-gray-400">
@@ -378,7 +337,7 @@
                         <li><a href="#" class="hover:text-white transition-colors">Thank You Cards</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
@@ -397,7 +356,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 Greeting Cards Creator. All rights reserved.</p>
             </div>
