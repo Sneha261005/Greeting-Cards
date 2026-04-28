@@ -3,36 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs React.js Full Stack Development | Card Creator</title>
-    <meta name="description" content="Learn about React.js front-end full stack development, modern web technologies, and building scalable applications. Discover best practices, tools, and frameworks.">
-    <meta name="keywords" content="React.js, full stack development, front-end, web development, JavaScript, Node.js, modern web apps">
+    <title>Card Gallery - Browse Greeting Cards | Card Creator</title>
+    <meta name="description" content="Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion with search and category filters.">
+    <meta name="keywords" content="greeting cards, card gallery, card templates, birthday cards, holiday cards, card design">
     <meta name="author" content="Greeting Cards Creator">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Blogs React.js Full Stack Development">
-    <meta property="og:description" content="Learn Blogs React.js front-end full stack development and modern web technologies">
+    <meta property="og:title" content="Card Gallery - Browse Greeting Cards">
+    <meta property="og:description" content="Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion with search and category filters.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://greetingcards.com/blog">
-    <meta property="og:image" content="https://greetingcards.com/images/blog-og.jpg">
+    <meta property="og:url" content="https://greetingcards.com/gallery">
+    <meta property="og:image" content="https://greetingcards.com/images/gallery-og.jpg">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blogs React.js Full Stack Development">
-    <meta name="twitter:description" content="Learn about React.js front-end full stack development and modern web technologies">
-    <meta name="twitter:image" content="https://greetingcards.com/images/blog-twitter.jpg">
+    <meta name="twitter:title" content="Card Gallery - Browse Greeting Cards">
+    <meta name="twitter:description" content="Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion.">
+    <meta name="twitter:image" content="https://greetingcards.com/images/gallery-twitter.jpg">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://greetingcards.com/blog">
+    <link rel="canonical" href="https://greetingcards.com/gallery">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "BlogsPage",
-        "name": "React.js Full Stack Development",
-        "description": "Learn Blogs React.js front-end full stack development, modern web technologies, and building scalable applications",
-        "url": "https://greetingcards.com/blog",
+        "@type": "CollectionPage",
+        "name": "Greeting Cards Gallery",
+        "description": "Browse our beautiful collection of greeting card templates. Find the perfect card for any occasion with search and category filters.",
+        "url": "https://greetingcards.com/gallery",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": "6",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "name": "Birthday Cards"
+                },
+                {
+                    "@type": "ListItem", 
+                    "name": "Holiday Cards"
+                },
+                {
+                    "@type": "ListItem",
+                    "name": "Love & Romance Cards"
+                },
+                {
+                    "@type": "ListItem",
+                    "name": "Congratulations Cards"
+                },
+                {
+                    "@type": "ListItem",
+                    "name": "Thank You Cards"
+                },
+                {
+                    "@type": "ListItem",
+                    "name": "Get Well Soon Cards"
+                }
+            ]
+        },
         "publisher": {
             "@type": "Organization",
             "name": "Greeting Cards Creator",
@@ -73,12 +103,13 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .blog-card {
+        .gallery-card {
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
-        .blog-card::before {
+        .gallery-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -90,7 +121,7 @@
             transition: transform 0.3s ease;
         }
 
-        .blog-card:hover::before {
+        .gallery-card:hover::before {
             transform: scaleX(1);
         }
 
@@ -127,111 +158,6 @@
             background: linear-gradient(135deg, #ec4899, #8b5cf6);
             border-radius: 10px;
         }
-
-        .tech-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .react-icon { background: linear-gradient(135deg, #61dafb, #21a1f1); color: white; }
-        .node-icon { background: linear-gradient(135deg, #8cc84b, #5a9216); color: white; }
-        .js-icon { background: linear-gradient(135deg, #f7df1e, #f0c419); color: #333; }
-        .db-icon { background: linear-gradient(135deg, #336791, #2c5aa0); color: white; }
-
-        /* Blog content styling */
-        .blog-content h2 {
-            color: #1f2937;
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 0.5rem;
-        }
-
-        .blog-content h3 {
-            color: #374151;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .blog-content h4 {
-            color: #4b5563;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-content p {
-            color: #4b5563;
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content ul, .blog-content ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-
-        .blog-content li {
-            color: #4b5563;
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .blog-content pre {
-            background: #1f2937;
-            color: #f3f4f6;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-
-        .blog-content code {
-            background: #f3f4f6;
-            color: #1f2937;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.875rem;
-        }
-
-        .blog-content pre code {
-            background: transparent;
-            color: inherit;
-            padding: 0;
-        }
-
-        .blog-content blockquote {
-            border-left: 4px solid #8b5cf6;
-            padding-left: 1rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-            color: #6b7280;
-        }
-
-        .blog-content strong {
-            color: #1f2937;
-            font-weight: 600;
-        }
-
-        .blog-content em {
-            color: #6b7280;
-            font-style: italic;
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
@@ -251,17 +177,17 @@
                         <i class="fas fa-home w-4 h-4"></i>
                         <span>Home</span>
                     </a>
-                    <a href="gallery.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    <a href="blog.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-info-circle w-4 h-4"></i>
+                        <span>About</span>
+                    </a>
+                    <a href="gallery.html" class="flex items-center space-x-2 text-purple-600 font-semibold">
                         <i class="fas fa-image w-4 h-4"></i>
                         <span>Gallery</span>
                     </a>
                     <a href="editor.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
                         <i class="fas fa-palette w-4 h-4"></i>
                         <span>Create</span>
-                    </a>
-                    <a href="blog.html" class="flex items-center space-x-2 text-purple-600 font-semibold">
-                        <i class="fas fa-blog w-4 h-4"></i>
-                        <span>Blogs</span>
                     </a>
                 </nav>
 
@@ -275,9 +201,9 @@
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
             <div class="px-6 py-4 space-y-3">
                 <a href="index.html" class="block text-gray-700 hover:text-purple-600">Home</a>
-                <a href="gallery.html" class="block text-gray-700 hover:text-purple-600">Gallery</a>
+                <a href="blog.html" class="block text-gray-700 hover:text-purple-600">About</a>
+                <a href="gallery.html" class="block text-purple-600 font-semibold">Gallery</a>
                 <a href="editor.html" class="block text-gray-700 hover:text-purple-600">Create</a>
-                <a href="blog.html" class="block text-purple-600 font-semibold">Blogs</a>
             </div>
         </div>
     </header>
@@ -287,10 +213,11 @@
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 fade-in">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="gradient-text">React.js Full Stack Development</span>
+                    <span class="gradient-text">Card Gallery</span>
                 </h1>
                 <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    Building modern, scalable web applications with React.js front-end and full-stack technologies
+                    Browse our beautiful collection of greeting card templates. 
+                    Find the perfect card for any occasion with our advanced search and filtering options.
                 </p>
 
                 <!-- Search Bar -->
@@ -299,9 +226,9 @@
                         <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
                         <input
                             type="text"
-                            id="blogSearch"
-                            placeholder="Search topics..."
-                            onkeyup="searchBlogs()"
+                            id="gallerySearch"
+                            placeholder="Search cards by name, category, or style..."
+                            onkeyup="searchCards()"
                             class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                         />
                     </div>
@@ -310,90 +237,58 @@
                 <!-- Category Filters -->
                 <div class="flex flex-wrap justify-center gap-3 mb-8" id="categoryFilters">
                     <button onclick="filterByCategory('all')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-purple-500 text-white">
-                        All Topics
+                        All Cards
                     </button>
-                    <button onclick="filterByCategory('frontend')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Frontend
+                    <button onclick="filterByCategory('birthday')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Birthday
                     </button>
-                    <button onclick="filterByCategory('backend')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Backend
+                    <button onclick="filterByCategory('love')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Love & Romance
                     </button>
-                    <button onclick="filterByCategory('tools')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Tools
+                    <button onclick="filterByCategory('holiday')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Holiday
                     </button>
-                    <button onclick="filterByCategory('best-practices')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
-                        Best Practices
+                    <button onclick="filterByCategory('thank-you')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Thank You
+                    </button>
+                    <button onclick="filterByCategory('congratulations')" class="category-btn px-4 py-2 rounded-lg transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
+                        Congratulations
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Posts Grid -->
+    <!-- Gallery Grid -->
     <section class="py-12">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGrid">
-                <!-- Blog posts will be inserted here by JavaScript -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="galleryGrid">
+                <!-- Gallery cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-12 hidden">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No cards found</h3>
+                <p class="text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
 
             <!-- Load More Button -->
             <div class="text-center mt-12">
-                <button onclick="loadMorePosts()" class="bg-white border-2 border-purple-500 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition-all duration-300">
-                    Load More Articles
+                <button onclick="loadMoreCards()" class="bg-white border-2 border-purple-500 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition-all duration-300">
+                    Load More Cards
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Tech Stack Section -->
+    <!-- Newsletter Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4 gradient-text">Technology Stack</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Modern tools and technologies for building full-stack applications
-                </p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="tech-icon react-icon mx-auto">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">React.js</h3>
-                    <p class="text-gray-600 text-sm">Component-based UI library for building interactive interfaces</p>
-                </div>
-                <div class="text-center">
-                    <div class="tech-icon node-icon mx-auto">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Node.js</h3>
-                    <p class="text-gray-600 text-sm">JavaScript runtime for building scalable server-side applications</p>
-                </div>
-                <div class="text-center">
-                    <div class="tech-icon js-icon mx-auto">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">JavaScript</h3>
-                    <p class="text-gray-600 text-sm">Modern ES6+ features and asynchronous programming</p>
-                </div>
-                <div class="text-center">
-                    <div class="tech-icon db-icon mx-auto">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Databases</h3>
-                    <p class="text-gray-600 text-sm">MongoDB, PostgreSQL, and modern data storage solutions</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
-        <div class="container mx-auto px-6">
             <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4 gradient-text">Stay Updated</h2>
+                <h2 class="text-3xl font-bold mb-4 gradient-text">Get Inspired</h2>
                 <p class="text-gray-600 mb-8">
-                    Get the latest React.js tutorials, best practices, and full-stack development tips delivered to your inbox
+                    Receive weekly design inspiration and exclusive card templates delivered to your inbox
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                     <input
@@ -427,36 +322,36 @@
                     <h4 class="font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">About</a></li>
                         <li><a href="gallery.html" class="hover:text-white transition-colors">Gallery</a></li>
                         <li><a href="editor.html" class="hover:text-white transition-colors">Create</a></li>
-                        <li><a href="blog.html" class="hover:text-white transition-colors">About</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold mb-4">Technologies</h4>
+                    <h4 class="font-semibold mb-4">Categories</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">React.js</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Node.js</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">JavaScript</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Full Stack</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Birthday Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Holiday Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Love Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Thank You Cards</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
+                            <i class="fab fa-facebook text-xl"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
                             <i class="fab fa-twitter text-xl"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-dev text-xl"></i>
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -469,6 +364,6 @@
     </footer>
 
     <script src="shared.js"></script>
-    <script src="blog.js"></script>
+    <script src="gallery.js"></script>
 </body>
 </html>

@@ -3,19 +3,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post - CardCraft Greeting Cards</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title id="pageTitle">Blog Post - Greeting Cards Creator</title>
+    <meta name="description" id="metaDescription" content="Read our latest blog post about greeting cards">
+    <meta name="keywords" id="metaKeywords" content="greeting cards, card design, blog">
+    <meta name="author" id="metaAuthor" content="Greeting Cards Creator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" id="ogTitle" content="Blog Post - Greeting Cards Creator">
+    <meta property="og:description" id="ogDescription" content="Read our latest blog post about greeting cards">
+    <meta property="og:type" content="article">
+    <meta property="og:url" id="ogUrl" content="">
+    <meta property="og:image" id="ogImage" content="">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitterTitle" content="Blog Post - Greeting Cards Creator">
+    <meta name="twitter:description" id="twitterDescription" content="Read our latest blog post about greeting cards">
+    <meta name="twitter:image" id="twitterImage" content="">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" id="canonicalUrl" href="">
+    
+    <!-- Article Structured Data -->
+    <script type="application/ld+json" id="structuredData">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Blog Post Title",
+        "description": "Blog post description",
+        "image": "",
+        "author": {
+            "@type": "Person",
+            "name": "Author Name"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Greeting Cards Creator"
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01"
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .article-content {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-content blockquote {
+            border-left: 4px solid #ec4899;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #4b5563;
+        }
+        
+        .article-content code {
+            background: #f3f4f6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .article-content pre {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .table-of-contents li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .table-of-contents a {
+            color: #4b5563;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .table-of-contents a:hover {
+            color: #ec4899;
+        }
+        
+        .related-post {
+            transition: all 0.3s ease;
+        }
+        
+        .related-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
-    <div id="root"></div>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="blog-data.js"></script>
-    <script type="text/babel" src="blog-post-app.js"></script>
+<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-heart text-pink-500 text-2xl"></i>
+                        <h1 class="text-2xl font-bold gradient-text">Greeting Cards</h1>
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-home w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="gallery.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-image w-4 h-4"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="editor.html" class="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-palette w-4 h-4"></i>
+                        <span>Create</span>
+                    </a>
+                    <a href="blog.html" class="flex items-center space-x-2 text-purple-600 font-semibold">
+                        <i class="fas fa-blog w-4 h-4"></i>
+                        <span>Blog</span>
+                    </a>
+                </nav>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-4 space-y-3">
+                <a href="index.html" class="block text-gray-700 hover:text-purple-600">Home</a>
+                <a href="gallery.html" class="block text-gray-700 hover:text-purple-600">Gallery</a>
+                <a href="editor.html" class="block text-gray-700 hover:text-purple-600">Create</a>
+                <a href="blog.html" class="block text-purple-600 font-semibold">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="py-4">
+        <div class="container mx-auto px-6">
+            <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li><a href="index.html" class="hover:text-purple-600 transition-colors">Home</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400"></i></li>
+                <li><a href="blog.html" class="hover:text-purple-600 transition-colors">Blog</a></li>
+                <li><i class="fas fa-chevron-right text-gray-400"></i></li>
+                <li id="breadcrumbCurrent" class="text-purple-600">Current Post</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <main class="py-12">
+        <article class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Article Header -->
+                <header class="text-center mb-12 fade-in">
+                    <div class="mb-6">
+                        <span id="postCategory" class="category-tag">Category</span>
+                    </div>
+                    <h1 id="postTitle" class="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+                        Loading Post Title...
+                    </h1>
+                    <div class="flex items-center justify-center space-x-6 text-gray-600 mb-8">
+                        <div class="flex items-center space-x-2">
+                            <img id="authorImage" src="https://picsum.photos/seed/author/40/40.jpg" alt="Author" class="w-10 h-10 rounded-full">
+                            <span id="authorName" class="font-medium">Author Name</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-calendar text-gray-400"></i>
+                            <span id="postDate">Date</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-clock text-gray-400"></i>
+                            <span id="readTime">Read time</span>
+                        </div>
+                    </div>
+                    <img id="postImage" src="https://picsum.photos/seed/default/1200/600.jpg" alt="Post image" class="w-full h-96 object-cover rounded-xl shadow-lg mb-8">
+                </header>
+
+                <!-- Table of Contents -->
+                <div id="tableOfContents" class="table-of-contents" style="display: none;">
+                    <h2 class="text-xl font-semibold mb-4">Table of Contents</h2>
+                    <ul id="tocList">
+                        <!-- TOC items will be inserted here -->
+                    </ul>
+                </div>
+
+                <!-- Article Body -->
+                <div id="articleContent" class="article-content text-lg text-gray-700 mb-12">
+                    <!-- Content will be inserted here -->
+                </div>
+
+                <!-- Tags -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-semibold mb-4">Tags</h3>
+                    <div id="postTags" class="flex flex-wrap gap-2">
+                        <!-- Tags will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Author Bio -->
+                <div class="bg-white rounded-xl p-8 shadow-lg mb-12">
+                    <div class="flex items-start space-x-4">
+                        <img id="authorBioImage" src="https://picsum.photos/seed/author/80/80.jpg" alt="Author" class="w-20 h-20 rounded-full">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">About <span id="authorBioName">Author Name</span></h4>
+                            <p id="authorBio" class="text-gray-600">
+                                Author bio will be displayed here.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share Section -->
+                <div class="text-center mb-12">
+                    <h3 class="text-xl font-semibold mb-6">Share This Article</h3>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" id="shareFacebook" class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" id="shareTwitter" class="w-12 h-12 bg-sky-500 text-white rounded-full flex items-center justify-center hover:bg-sky-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" id="sharePinterest" class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" id="shareLinkedIn" class="w-12 h-12 bg-blue-700 text-white rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 gradient-text">Related Posts</h3>
+                    <div id="relatedPosts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Related posts will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4 gradient-text">Enjoyed This Article?</h2>
+                <p class="text-gray-600 mb-8">
+                    Get more greeting card tips and ideas delivered to your inbox weekly
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    />
+                    <button class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-pink-500 text-xl"></i>
+                        <h3 class="text-xl font-bold">Greeting Cards</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Create beautiful personalized greeting cards for every occasion with our easy-to-use tools.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="editor.html" class="hover:text-white transition-colors">Create</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Birthday Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Holiday Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Love Cards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Thank You Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Greeting Cards Creator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="blog-post.js"></script>
 </body>
 </html>
