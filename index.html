@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Cards Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="shared.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .card-preview {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'Roboto Mono', monospace; }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
+                    <i class="fas fa-heart text-pink-500 text-2xl"></i>
+                    <h1 class="text-2xl font-bold gradient-text">Greeting Cards</h1>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-home w-4 h-4"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#gallery" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-image w-4 h-4"></i>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="#editor" class="nav-link flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors">
+                        <i class="fas fa-palette w-4 h-4"></i>
+                        <span>Create</span>
+                    </a>
+                    <a href="blog.html" class="nav-link flex items-center space-x-2 text-purple-600 font-semibold">
+                        <i class="fas fa-blog w-4 h-4"></i>
+                        <span>Blogs</span>
+                    </a>
+                </nav>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-purple-600">Home</a>
+                <a href="#gallery" class="block text-gray-700 hover:text-purple-600">Gallery</a>
+                <a href="#editor" class="block text-gray-700 hover:text-purple-600">Create</a>
+                <a href="blog.html" class="block text-purple-600 font-semibold">Blogs</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="container mx-auto px-6 py-12">
+            <!-- Hero Section -->
+            <div class="text-center mb-16 fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">Create Beautiful</span>
+                    <br />
+                    <span class="text-gray-800">Greeting Cards</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Design personalized greeting cards for every occasion. 
+                    Choose from our templates or create your own unique design.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showPage('editor')" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300">
+                        Start Creating
+                    </button>
+                    <button onclick="showPage('gallery')" class="border-2 border-purple-500 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-50 transition-all duration-300">
+                        Browse Gallery
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-6 bg-white rounded-xl card-shadow hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Beautiful Designs</h3>
+                    <p class="text-gray-600">Choose from professionally designed templates for any occasion</p>
+                </div>
+
+                <div class="text-center p-6 bg-white rounded-xl card-shadow hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-magic text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Easy Customization</h3>
+                    <p class="text-gray-600">Personalize colors, text, and images with our intuitive editor</p>
+                </div>
+
+                <div class="text-center p-6 bg-white rounded-xl card-shadow hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-download text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Instant Download</h3>
+                    <p class="text-gray-600">Download your creation instantly in high-quality formats</p>
+                </div>
+            </div>
+
+            <!-- Card Templates Section -->
+            <div>
+                <h2 class="text-3xl font-bold text-center mb-12 gradient-text">Choose a Template</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="templateGrid">
+                    <!-- Templates will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Blog Section -->
+            <div class="py-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text">Latest from Our Blog</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        Expert tips, creative ideas, and inspiration for crafting perfect greeting cards
+                    </p>
+                    <a href="blog.html" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300">
+                        <span>View All Posts</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery" class="page">
+        <div class="container mx-auto px-6 py-12">
+            <h1 class="text-4xl font-bold text-center mb-12 gradient-text">Card Gallery</h1>
+            <p class="text-center text-gray-600 mb-8">Browse our collection of beautiful greeting cards</p>
+            
+            <!-- Search and Filter -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="gallerySearch" placeholder="Search cards..." 
+                               class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <select id="categoryFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="">All Categories</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="love">Love</option>
+                        <option value="holiday">Holiday</option>
+                        <option value="thank-you">Thank You</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="cardsGrid">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-12 hidden">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">No cards found</h3>
+                <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Editor Page -->
+    <div id="editor" class="page">
+        <div class="container mx-auto px-6 py-12">
+            <h1 class="text-4xl font-bold text-center mb-12 gradient-text">Card Editor</h1>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Preview Panel -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Preview</h2>
+                    <div class="bg-white rounded-xl card-shadow p-8">
+                        <div id="cardPreview" class="card-preview mx-auto" style="width: 400px; height: 600px;">
+                            <!-- Card preview will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Panel -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Customize Your Card</h2>
+                    
+                    <!-- Template Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Template</label>
+                        <select id="templateSelect" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="">Choose a template...</option>
+                        </select>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Text Content</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                                <input type="text" id="cardTitle" placeholder="Enter card title..." 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="cardMessage" rows="4" placeholder="Enter your message..." 
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Signature</label>
+                                <input type="text" id="cardSignature" placeholder="Your name..." 
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Style Options -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Style Options</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Background Color</label>
+                                <input type="color" id="bgColor" value="#ffffff" 
+                                       class="w-full h-10 border border-gray-300 rounded-lg cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Text Color</label>
+                                <input type="color" id="textColor" value="#333333" 
+                                       class="w-full h-10 border border-gray-300 rounded-lg cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Font Family</label>
+                                <select id="fontFamily" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <option value="Inter">Inter (Modern)</option>
+                                    <option value="Playfair Display">Playfair Display (Elegant)</option>
+                                    <option value="Roboto Mono">Roboto Mono (Monospace)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Font Size</label>
+                                <input type="range" id="fontSize" min="12" max="24" value="16" 
+                                       class="w-full">
+                                <span id="fontSizeValue" class="text-sm text-gray-600">16px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="downloadCard()" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">
+                            <i class="fas fa-download mr-2"></i>
+                            Download Card
+                        </button>
+                        <button onclick="resetCard()" class="flex-1 border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                            <i class="fas fa-undo mr-2"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
