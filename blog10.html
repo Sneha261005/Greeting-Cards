@@ -1,0 +1,166 @@
+<!-- ========================= -->
+<!-- BLOG 10 : LISTS AND KEYS -->
+<!-- Save as: blog10.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 10 - Lists and Keys in React</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#ff6b6b;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#ff6b6b;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#ff6b6b;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Lists and Keys in React</h1>
+    <p>Displaying Multiple Data Efficiently</p>
+</header>
+
+<div class="container">
+
+<h2>Introduction</h2>
+
+<p>
+Lists are used in React to display multiple items dynamically.
+Instead of writing repeated HTML manually, React allows developers
+to generate UI using arrays and the map() function.
+</p>
+
+<p>
+Examples include product lists, student records, blog posts,
+comments, shopping cart items, and notifications.
+</p>
+
+<h2>Using map() in React</h2>
+
+<p>
+Example:
+</p>
+
+<p>
+students.map(student =&gt;
+&lt;li&gt;{student}&lt;/li&gt;
+)
+</p>
+
+<p>
+This helps display data dynamically and keeps code clean.
+</p>
+
+<h2>What are Keys?</h2>
+
+<p>
+Keys are special attributes used to identify each item uniquely in a list.
+React uses keys to track changes efficiently.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+students.map(student =&gt;
+&lt;li key={student.id}&gt;{student.name}&lt;/li&gt;
+)
+</p>
+
+<p>
+Without keys, React may show warnings and performance issues.
+</p>
+
+<h2>Why Keys are Important</h2>
+
+<p>
+Keys help React understand which items changed,
+which were added, and which were removed.
+This improves rendering speed and application performance.
+</p>
+
+<h2>Best Practices</h2>
+
+<p>
+Always use unique IDs instead of array indexes when possible.
+Avoid duplicate keys because they can cause bugs.
+</p>
+
+<h2>Real-World Example</h2>
+
+<p>
+In a bakery website, cake products can be displayed using lists.
+In a greeting card website, templates can be shown dynamically using map().
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+Lists and Keys are essential for dynamic UI creation in React.
+They improve code quality, performance, and scalability in large applications.
+</p>
+
+<a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 10 Loaded");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!-- ========================= -->
+<!-- BLOG 8 : EVENT HANDLING IN REACT -->
+<!-- Save as: blog8.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 8 - Event Handling in React</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#6610f2;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#6610f2;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#6610f2;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#520dc2;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Event Handling in React</h1>
+    <p>Making React Applications Interactive and User-Friendly</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to Event Handling</h2>
+
+    <p>
+        Event handling is one of the most important concepts in React.js because it allows users
+        to interact with the application. Without event handling, a website would only display
+        static content and would not respond to user actions.
+    </p>
+
+    <p>
+        Events include actions like clicking a button, typing in an input box,
+        submitting a form, hovering over an image, pressing a keyboard key,
+        or selecting an item from a dropdown menu.
+    </p>
+
+    <p>
+        React uses event handling to create dynamic and responsive applications
+        like login systems, shopping carts, dashboards, and greeting card websites.
+    </p>
+
+    <h2>What is an Event?</h2>
+
+    <p>
+        An event is any action performed by the user or browser.
+    </p>
+
+    <p>
+        Common examples include:
+        button click,
+        form submit,
+        mouse hover,
+        input change,
+        key press,
+        page load,
+        and image selection.
+    </p>
+
+    <p>
+        React listens for these actions and performs specific tasks based on them.
+    </p>
+
+    <h2>How React Handles Events</h2>
+
+    <p>
+        React handles events using camelCase syntax instead of lowercase HTML syntax.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        HTML:
+        onclick
+    </p>
+
+    <p>
+        React:
+        onClick
+    </p>
+
+    <p>
+        This is an important difference between HTML and React event handling.
+    </p>
+
+    <h2>Simple Button Click Example</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function App() {
+        <br>
+        function showMessage() {
+        <br>
+        alert("Button Clicked");
+        <br>
+        }
+        <br><br>
+        return (
+        <br>
+        &lt;button onClick={showMessage}&gt;Click Me&lt;/button&gt;
+        <br>
+        );
+        <br>
+        }
+    </p>
+
+    <p>
+        When the user clicks the button, the function runs automatically.
+    </p>
+
+    <h2>Why Event Handling is Important</h2>
+
+    <p>
+        Event handling helps applications respond to user actions.
+        It improves user experience and makes websites interactive.
+    </p>
+
+    <p>
+        For example:
+        clicking login,
+        adding products to cart,
+        submitting contact forms,
+        changing themes,
+        and opening blog pages all use event handling.
+    </p>
+
+    <p>
+        Without events, modern frontend applications would not function properly.
+    </p>
+
+    <h2>Handling Input Changes</h2>
+
+    <p>
+        React commonly uses the onChange event for form inputs.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        const [name, setName] = useState("");
+        <br><br>
+        &lt;input
+        <br>
+        type="text"
+        <br>
+        onChange={(e) =&gt; setName(e.target.value)}
+        <br>
+        /&gt;
+    </p>
+
+    <p>
+        This updates the state whenever the user types in the input field.
+    </p>
+
+    <h2>Form Submission Event</h2>
+
+    <p>
+        React uses the onSubmit event for forms.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function handleSubmit(e) {
+        <br>
+        e.preventDefault();
+        <br>
+        alert("Form Submitted");
+        <br>
+        }
+    </p>
+
+    <p>
+        The preventDefault() method stops the page from refreshing automatically.
+    </p>
+
+    <p>
+        This is very important for React forms.
+    </p>
+
+    <h2>Mouse Events in React</h2>
+
+    <p>
+        React supports mouse events like:
+    </p>
+
+    <p>
+        onClick
+        <br>
+        onDoubleClick
+        <br>
+        onMouseOver
+        <br>
+        onMouseOut
+        <br>
+        onMouseEnter
+        <br>
+        onMouseLeave
+    </p>
+
+    <p>
+        These events are useful for tooltips, hover effects, image previews,
+        and interactive UI designs.
+    </p>
+
+    <h2>Keyboard Events in React</h2>
+
+    <p>
+        React also supports keyboard events like:
+    </p>
+
+    <p>
+        onKeyDown
+        <br>
+        onKeyUp
+        <br>
+        onKeyPress
+    </p>
+
+    <p>
+        These are useful for search bars, login forms,
+        and keyboard shortcuts in applications.
+    </p>
+
+    <h2>Passing Arguments in Events</h2>
+
+    <p>
+        Sometimes developers need to pass custom values to event functions.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;button onClick={() =&gt; deleteItem(id)}&gt;
+        Delete
+        &lt;/button&gt;
+    </p>
+
+    <p>
+        This helps perform actions for specific items like deleting products or students.
+    </p>
+
+    <h2>Event Object in React</h2>
+
+    <p>
+        React automatically provides an event object that contains useful information
+        about the event.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function handleClick(event) {
+        <br>
+        console.log(event.target);
+        <br>
+        }
+    </p>
+
+    <p>
+        This helps developers access input values, clicked elements, and more.
+    </p>
+
+    <h2>Real-World Example</h2>
+
+    <p>
+        In a bakery management system,
+        event handling is used for adding cakes to cart,
+        updating quantity, searching products, and placing orders.
+    </p>
+
+    <p>
+        In a greeting card website,
+        users click templates, customize text, upload images,
+        and download cards using event handling.
+    </p>
+
+    <p>
+        In student portals, login, attendance submission,
+        and profile updates all depend on events.
+    </p>
+
+    <h2>Benefits of Event Handling</h2>
+
+    <p>
+        Event handling provides many advantages:
+    </p>
+
+    <p>
+        Better user interaction
+        <br>
+        Dynamic application behavior
+        <br>
+        Faster UI response
+        <br>
+        Improved user experience
+        <br>
+        Real-time updates
+        <br>
+        Professional frontend development
+    </p>
+
+    <p>
+        These benefits make event handling a core part of React development.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often make mistakes like:
+    </p>
+
+    <p>
+        Using onclick instead of onClick
+        <br>
+        Calling functions directly instead of passing references
+        <br>
+        Forgetting preventDefault()
+        <br>
+        Incorrect use of event.target.value
+    </p>
+
+    <p>
+        Learning these properly helps avoid major errors in React applications.
+    </p>
+
+    <h2>Best Practices for Event Handling</h2>
+
+    <p>
+        Use meaningful function names like handleSubmit, handleLogin, handleDelete
+        instead of generic names.
+    </p>
+
+    <p>
+        Keep event logic simple and organized.
+        Avoid writing too much code directly inside JSX.
+    </p>
+
+    <p>
+        Use reusable functions whenever possible for better project structure.
+    </p>
+
+    <h2>Event Handling in Job Interviews</h2>
+
+    <p>
+        Event handling is a common React interview topic.
+        Interviewers often ask:
+    </p>
+
+    <p>
+        Difference between HTML and React event handling?
+        <br>
+        Why use preventDefault()?
+        <br>
+        What is event.target.value?
+        <br>
+        How to pass arguments in events?
+    </p>
+
+    <p>
+        Strong understanding helps students perform better in interviews and projects.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        Event handling is essential for building modern React applications.
+        It allows applications to respond to user actions and creates interactive user experiences.
+    </p>
+
+    <p>
+        From simple button clicks to advanced form systems,
+        event handling is used everywhere in frontend development.
+    </p>
+
+    <p>
+        Mastering event handling is an important step in learning React.js.
+        Once it becomes clear, Forms, APIs, Routing, and full frontend projects become much easier to build.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 8 Loaded Successfully");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!-- ========================= -->
+<!-- BLOG 7 : useEffect HOOK -->
+<!-- Save as: blog7.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 7 - useEffect Hook</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#0dcaf0;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#0dcaf0;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#0dcaf0;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#0aa2c0;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>useEffect Hook</h1>
+    <p>Managing Side Effects in React Functional Components</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to useEffect Hook</h2>
+
+    <p>
+        The useEffect Hook is one of the most important Hooks in React.js.
+        It is used for handling side effects inside Functional Components.
+    </p>
+
+    <p>
+        Before Hooks were introduced, lifecycle methods in Class Components were used
+        for tasks like API calls, timers, and DOM updates.
+        useEffect replaced much of that complexity and made Functional Components more powerful.
+    </p>
+
+    <p>
+        Today, useEffect is used in almost every React application because real-world projects
+        require dynamic actions beyond simple UI rendering.
+    </p>
+
+    <h2>What is a Side Effect?</h2>
+
+    <p>
+        A side effect is any operation that affects something outside the component rendering process.
+    </p>
+
+    <p>
+        Examples include:
+        API calls,
+        fetching data from a server,
+        setting timers,
+        updating the browser title,
+        local storage access,
+        subscriptions,
+        and event listeners.
+    </p>
+
+    <p>
+        These tasks are called side effects because they happen outside the normal UI display process.
+    </p>
+
+    <h2>Why useEffect is Needed</h2>
+
+    <p>
+        React components mainly focus on rendering UI.
+        But real applications also need external operations like loading user data,
+        checking login status, or updating page titles.
+    </p>
+
+    <p>
+        The useEffect Hook allows developers to perform these operations safely
+        after the component renders.
+    </p>
+
+    <p>
+        This keeps the UI logic separate from external actions and improves code structure.
+    </p>
+
+    <h2>Basic Syntax of useEffect</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        console.log("Component Loaded");
+        <br>
+        }, []);
+    </p>
+
+    <p>
+        Here:
+        <br>
+        First part = function to run
+        <br>
+        Second part = dependency array
+    </p>
+
+    <p>
+        This example runs only once when the component loads.
+    </p>
+
+    <h2>Understanding the Dependency Array</h2>
+
+    <p>
+        The dependency array controls when useEffect runs.
+    </p>
+
+    <p>
+        There are three common cases:
+    </p>
+
+    <p>
+        1. No dependency array → runs after every render
+        <br>
+        2. Empty dependency array [] → runs only once
+        <br>
+        3. With values [count] → runs when that value changes
+    </p>
+
+    <p>
+        Understanding this is very important for using useEffect correctly.
+    </p>
+
+    <h2>Running useEffect Once</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        fetchUserData();
+        <br>
+        }, []);
+    </p>
+
+    <p>
+        This is commonly used for loading API data when the page opens.
+    </p>
+
+    <p>
+        It works like componentDidMount() in Class Components.
+    </p>
+
+    <h2>Running useEffect on State Change</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        console.log("Count changed");
+        <br>
+        }, [count]);
+    </p>
+
+    <p>
+        This runs only when the count value changes.
+        It is useful for reacting to user actions dynamically.
+    </p>
+
+    <h2>Running useEffect After Every Render</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        console.log("Rendered");
+        <br>
+        });
+    </p>
+
+    <p>
+        Without a dependency array, useEffect runs after every render.
+        This should be used carefully because unnecessary re-renders can reduce performance.
+    </p>
+
+    <h2>API Fetching with useEffect</h2>
+
+    <p>
+        One of the most common uses of useEffect is fetching data from APIs.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        fetch("https://api.example.com/users")
+        <br>
+        .then(response =&gt; response.json())
+        <br>
+        .then(data =&gt; setUsers(data));
+        <br>
+        }, []);
+    </p>
+
+    <p>
+        This helps load live data from servers into the application.
+    </p>
+
+    <h2>Cleanup Function in useEffect</h2>
+
+    <p>
+        Some side effects need cleanup when the component is removed.
+        For example: timers, subscriptions, and event listeners.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        const timer = setInterval(() =&gt; {
+        <br>
+        console.log("Running");
+        <br>
+        }, 1000);
+        <br><br>
+        return () =&gt; clearInterval(timer);
+        <br>
+        }, []);
+    </p>
+
+    <p>
+        This prevents memory leaks and improves application performance.
+    </p>
+
+    <h2>Real-World Example</h2>
+
+    <p>
+        In a bakery management system,
+        useEffect can fetch available cakes from the server when the page loads.
+    </p>
+
+    <p>
+        In a greeting card website,
+        useEffect can load saved card templates from a database automatically.
+    </p>
+
+    <p>
+        In student portals, it can fetch attendance, marks, and profile details.
+    </p>
+
+    <p>
+        This makes applications dynamic and real-time.
+    </p>
+
+    <h2>Benefits of useEffect</h2>
+
+    <p>
+        useEffect provides many advantages:
+    </p>
+
+    <p>
+        Cleaner code
+        <br>
+        Easy API handling
+        <br>
+        Lifecycle replacement
+        <br>
+        Better performance control
+        <br>
+        Automatic updates
+        <br>
+        Improved Functional Components
+    </p>
+
+    <p>
+        These benefits make useEffect one of the most powerful Hooks in React.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often make mistakes like:
+    </p>
+
+    <p>
+        Missing dependency arrays
+        <br>
+        Infinite loops caused by incorrect dependencies
+        <br>
+        Forgetting cleanup functions
+        <br>
+        Using too much logic inside one useEffect
+    </p>
+
+    <p>
+        Understanding dependency arrays clearly helps avoid these issues.
+    </p>
+
+    <h2>Best Practices for useEffect</h2>
+
+    <p>
+        Keep useEffect focused on one task only.
+        Avoid mixing multiple unrelated operations in a single Hook.
+    </p>
+
+    <p>
+        Always use cleanup functions where needed.
+        Use correct dependency arrays to avoid unnecessary rendering.
+    </p>
+
+    <p>
+        Write meaningful code for better readability and maintenance.
+    </p>
+
+    <h2>useEffect in Job Interviews</h2>
+
+    <p>
+        useEffect is a very common React interview topic.
+        Interviewers often ask:
+    </p>
+
+    <p>
+        What is useEffect?
+        <br>
+        Difference between useState and useEffect?
+        <br>
+        What is dependency array?
+        <br>
+        How does cleanup work?
+    </p>
+
+    <p>
+        Strong knowledge of useEffect helps students perform better in interviews and projects.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        The useEffect Hook is essential for handling side effects in React applications.
+        It helps Functional Components perform API calls, timers, subscriptions, and many real-world tasks.
+    </p>
+
+    <p>
+        It replaces complex lifecycle methods and makes React development cleaner and more professional.
+    </p>
+
+    <p>
+        Mastering useEffect is a major step in becoming a strong React developer.
+        Once useState and useEffect are clear, advanced topics like Context API,
+        Redux, Performance Optimization, and large-scale applications become much easier.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 7 Loaded Successfully");
+</script>
+
+</body>
+</html>
