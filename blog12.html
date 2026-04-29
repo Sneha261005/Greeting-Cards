@@ -1,0 +1,420 @@
+<!-- ========================= -->
+<!-- BLOG 12 : REACT ROUTER -->
+<!-- Save as: blog12.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 12 - React Router</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#17a2b8;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#17a2b8;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#17a2b8;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#11707f;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>React Router</h1>
+    <p>Navigation and Multiple Pages in React Applications</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to React Router</h2>
+
+    <p>
+        React Router is one of the most important libraries in React.js.
+        It helps developers create multiple pages and navigation inside a React application
+        without reloading the entire website.
+    </p>
+
+    <p>
+        In normal HTML websites, moving from one page to another reloads the full page.
+        React Router makes navigation faster by changing components without full page refresh.
+    </p>
+
+    <p>
+        This creates a smooth and modern user experience similar to professional web applications.
+    </p>
+
+    <h2>Why React Router is Important</h2>
+
+    <p>
+        Most real-world applications need multiple pages.
+        For example:
+        Home page,
+        About page,
+        Contact page,
+        Login page,
+        Dashboard,
+        Product details,
+        Blog pages,
+        and Profile pages.
+    </p>
+
+    <p>
+        React Router helps manage all these pages efficiently inside a single React application.
+    </p>
+
+    <p>
+        Without routing, large applications become difficult to manage.
+    </p>
+
+    <h2>Installing React Router</h2>
+
+    <p>
+        React Router is installed using npm:
+    </p>
+
+    <p>
+        npm install react-router-dom
+    </p>
+
+    <p>
+        This package provides all the tools needed for routing in React applications.
+    </p>
+
+    <h2>Main Components of React Router</h2>
+
+    <p>
+        The most important components are:
+    </p>
+
+    <p>
+        BrowserRouter
+        <br>
+        Routes
+        <br>
+        Route
+        <br>
+        Link
+        <br>
+        NavLink
+        <br>
+        useNavigate
+    </p>
+
+    <p>
+        These components work together to create page navigation.
+    </p>
+
+    <h2>BrowserRouter</h2>
+
+    <p>
+        BrowserRouter is the main wrapper for the entire application.
+        It enables routing functionality.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;BrowserRouter&gt;
+        <br>
+        &lt;App /&gt;
+        <br>
+        &lt;/BrowserRouter&gt;
+    </p>
+
+    <p>
+        Without BrowserRouter, routing will not work.
+    </p>
+
+    <h2>Routes and Route</h2>
+
+    <p>
+        Routes is used to group all route definitions,
+        while Route defines a single page path.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;Routes&gt;
+        <br>
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        <br>
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+        <br>
+        &lt;/Routes&gt;
+    </p>
+
+    <p>
+        This creates Home and About pages inside the application.
+    </p>
+
+    <h2>Using Link Instead of Anchor Tag</h2>
+
+    <p>
+        In React Router, Link is used instead of the normal HTML anchor tag.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;Link to="/about"&gt;About&lt;/Link&gt;
+    </p>
+
+    <p>
+        Link prevents full page reload and keeps navigation fast.
+    </p>
+
+    <h2>NavLink for Active Styling</h2>
+
+    <p>
+        NavLink works like Link but also helps style the active page automatically.
+    </p>
+
+    <p>
+        This is useful for navigation menus where the current page should be highlighted.
+    </p>
+
+    <p>
+        It improves UI clarity and user experience.
+    </p>
+
+    <h2>Programmatic Navigation with useNavigate</h2>
+
+    <p>
+        Sometimes navigation needs to happen after actions like login or form submission.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        const navigate = useNavigate();
+        <br>
+        navigate("/dashboard");
+    </p>
+
+    <p>
+        This helps redirect users automatically after important actions.
+    </p>
+
+    <h2>Dynamic Routing</h2>
+
+    <p>
+        Dynamic routes are used when pages depend on IDs or specific values.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        /product/1
+        <br>
+        /product/2
+        <br>
+        /blog/5
+    </p>
+
+    <p>
+        This is very useful for blog pages, product details, and student profiles.
+    </p>
+
+    <h2>404 Page Handling</h2>
+
+    <p>
+        React Router can also handle pages that do not exist.
+    </p>
+
+    <p>
+        Example:
+        A custom “Page Not Found” screen improves professionalism and user guidance.
+    </p>
+
+    <p>
+        This is commonly used in large production applications.
+    </p>
+
+    <h2>Real-World Example</h2>
+
+    <p>
+        In a greeting card website,
+        React Router is used for Home, Blog, Card Details, Contact, and Checkout pages.
+    </p>
+
+    <p>
+        In a bakery management system,
+        it handles Product List, Order Page, Admin Dashboard, and Payment pages.
+    </p>
+
+    <p>
+        In student portals, it manages Login, Profile, Attendance, and Results pages.
+    </p>
+
+    <h2>Benefits of React Router</h2>
+
+    <p>
+        React Router provides many advantages:
+    </p>
+
+    <p>
+        Faster navigation
+        <br>
+        Better user experience
+        <br>
+        No full page reload
+        <br>
+        Cleaner project structure
+        <br>
+        Dynamic page handling
+        <br>
+        Professional frontend architecture
+    </p>
+
+    <p>
+        These benefits make React Router essential for large applications.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often make mistakes like:
+    </p>
+
+    <p>
+        Forgetting BrowserRouter
+        <br>
+        Using anchor tags instead of Link
+        <br>
+        Incorrect Route path syntax
+        <br>
+        Wrong import statements
+    </p>
+
+    <p>
+        Learning these basics properly helps avoid routing errors.
+    </p>
+
+    <h2>Best Practices for Routing</h2>
+
+    <p>
+        Keep route structure simple and organized.
+        Use meaningful paths like /dashboard, /products, /blogs instead of unclear names.
+    </p>
+
+    <p>
+        Separate route components clearly and avoid deeply nested unnecessary routes.
+    </p>
+
+    <p>
+        Use protected routes for login-based private pages where needed.
+    </p>
+
+    <h2>React Router in Job Interviews</h2>
+
+    <p>
+        React Router is a common interview topic.
+        Interviewers often ask:
+    </p>
+
+    <p>
+        What is BrowserRouter?
+        <br>
+        Difference between Link and anchor tag?
+        <br>
+        What is dynamic routing?
+        <br>
+        How to redirect users after login?
+    </p>
+
+    <p>
+        Strong knowledge helps students perform better in frontend interviews.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        React Router is essential for building modern multi-page React applications.
+        It improves navigation speed, user experience, and application structure.
+    </p>
+
+    <p>
+        From simple websites to large enterprise dashboards,
+        React Router is used everywhere in professional frontend development.
+    </p>
+
+    <p>
+        Mastering routing is a major step toward becoming a strong React developer.
+        It helps build scalable, professional, and user-friendly web applications.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 12 Loaded Successfully");
+</script>
+
+</body>
+</html>

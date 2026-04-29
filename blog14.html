@@ -1,0 +1,413 @@
+<!-- ========================= -->
+<!-- BLOG 14 : CONTEXT API -->
+<!-- Save as: blog14.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 14 - Context API</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f8f9fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#e83e8c;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#e83e8c;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#e83e8c;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#c2186a;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Context API</h1>
+    <p>Managing Global State in React Applications</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to Context API</h2>
+
+    <p>
+        Context API is one of the most useful features in React.js for managing data
+        that needs to be shared across multiple components.
+        It helps avoid the problem of passing props manually through many levels.
+    </p>
+
+    <p>
+        In large applications, data like user login details, themes,
+        shopping cart information, and language settings
+        are needed by many components at the same time.
+    </p>
+
+    <p>
+        Context API provides a clean and efficient way to manage this shared data.
+    </p>
+
+    <h2>What is Prop Drilling?</h2>
+
+    <p>
+        Before understanding Context API, it is important to know prop drilling.
+    </p>
+
+    <p>
+        Prop drilling happens when data is passed from a parent component
+        to deeply nested child components through multiple intermediate components,
+        even when those middle components do not need the data.
+    </p>
+
+    <p>
+        This makes code harder to manage and less readable.
+    </p>
+
+    <h2>Why Context API is Needed</h2>
+
+    <p>
+        Context API solves prop drilling by allowing data to be shared directly
+        between components without passing props manually at every level.
+    </p>
+
+    <p>
+        This makes the code cleaner, reduces repetition,
+        and improves project structure.
+    </p>
+
+    <p>
+        It is especially useful in medium and large React applications.
+    </p>
+
+    <h2>Common Use Cases of Context API</h2>
+
+    <p>
+        Context API is commonly used for:
+    </p>
+
+    <p>
+        User authentication
+        <br>
+        Dark mode and themes
+        <br>
+        Shopping cart data
+        <br>
+        Language settings
+        <br>
+        Student login systems
+        <br>
+        Admin dashboard permissions
+    </p>
+
+    <p>
+        These are examples of global data shared across the application.
+    </p>
+
+    <h2>Creating Context</h2>
+
+    <p>
+        The first step is creating a context using createContext().
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        import { createContext } from "react";
+        <br><br>
+        const UserContext = createContext();
+    </p>
+
+    <p>
+        This creates a new context that can store shared data.
+    </p>
+
+    <h2>Provider Component</h2>
+
+    <p>
+        The Provider is used to supply data to all child components.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;UserContext.Provider value={user}&gt;
+        <br>
+        &lt;App /&gt;
+        <br>
+        &lt;/UserContext.Provider&gt;
+    </p>
+
+    <p>
+        Here, all child components inside App can access the user data.
+    </p>
+
+    <h2>Using useContext Hook</h2>
+
+    <p>
+        React provides the useContext Hook to access context data easily.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        import { useContext } from "react";
+        <br><br>
+        const user = useContext(UserContext);
+    </p>
+
+    <p>
+        This allows components to directly access shared data without props.
+    </p>
+
+    <h2>Simple Real Example</h2>
+
+    <p>
+        Suppose a website has login information stored globally.
+        Instead of passing user details from Navbar to Dashboard to Profile,
+        Context API allows every page to directly access the logged-in user data.
+    </p>
+
+    <p>
+        This saves time and keeps the code clean.
+    </p>
+
+    <h2>Theme Management Example</h2>
+
+    <p>
+        Dark mode and light mode are common examples of Context API usage.
+    </p>
+
+    <p>
+        The selected theme can be stored globally,
+        and all components can automatically update based on that value.
+    </p>
+
+    <p>
+        This improves user experience and consistency.
+    </p>
+
+    <h2>Shopping Cart Example</h2>
+
+    <p>
+        In e-commerce applications,
+        cart data is needed in Product Page, Cart Page, Navbar, and Checkout Page.
+    </p>
+
+    <p>
+        Context API helps all these pages access cart information directly.
+    </p>
+
+    <p>
+        This is one of the most common real-world uses of Context API.
+    </p>
+
+    <h2>Real-World Example</h2>
+
+    <p>
+        In a bakery management system,
+        Context API can manage cart details, customer login, and payment status.
+    </p>
+
+    <p>
+        In a greeting card website,
+        it can manage selected templates, premium access, and user customization preferences.
+    </p>
+
+    <p>
+        In student portals, it can manage login sessions and role-based dashboard access.
+    </p>
+
+    <h2>Benefits of Context API</h2>
+
+    <p>
+        Context API provides many advantages:
+    </p>
+
+    <p>
+        Reduces prop drilling
+        <br>
+        Cleaner code structure
+        <br>
+        Easier global state management
+        <br>
+        Better scalability
+        <br>
+        Improved developer productivity
+        <br>
+        Professional application architecture
+    </p>
+
+    <p>
+        These benefits make Context API very useful in frontend development.
+    </p>
+
+    <h2>Context API vs Props</h2>
+
+    <p>
+        Props are best for passing data between closely connected components.
+    </p>
+
+    <p>
+        Context API is better when the same data is needed across many distant components.
+    </p>
+
+    <p>
+        Both are useful, but Context API is stronger for global state management.
+    </p>
+
+    <h2>Context API vs Redux</h2>
+
+    <p>
+        Context API works well for medium-sized applications.
+        Redux is often used for very large applications with complex state management.
+    </p>
+
+    <p>
+        For beginners, Context API is easier to learn and implement compared to Redux.
+    </p>
+
+    <p>
+        Many projects start with Context API before moving to Redux.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often make mistakes like:
+    </p>
+
+    <p>
+        Forgetting Provider wrapping
+        <br>
+        Wrong imports
+        <br>
+        Using too much data inside one context
+        <br>
+        Confusing Context API with props
+    </p>
+
+    <p>
+        Learning the structure properly helps avoid these issues.
+    </p>
+
+    <h2>Best Practices for Context API</h2>
+
+    <p>
+        Keep separate contexts for different purposes like UserContext,
+        ThemeContext, and CartContext instead of storing everything together.
+    </p>
+
+    <p>
+        Use Context API only when needed.
+        Do not replace simple props unnecessarily.
+    </p>
+
+    <p>
+        Keep context structure organized for better scalability.
+    </p>
+
+    <h2>Context API in Job Interviews</h2>
+
+    <p>
+        Context API is a common React interview topic.
+        Interviewers often ask:
+    </p>
+
+    <p>
+        What is prop drilling?
+        <br>
+        Why use Context API?
+        <br>
+        Difference between Context API and Redux?
+        <br>
+        How does useContext work?
+    </p>
+
+    <p>
+        Strong understanding helps students perform better in frontend interviews.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        Context API is a powerful solution for managing shared data in React applications.
+        It helps reduce prop drilling and improves application structure significantly.
+    </p>
+
+    <p>
+        From login systems to shopping carts and theme management,
+        Context API is widely used in modern frontend projects.
+    </p>
+
+    <p>
+        Mastering Context API is an important step toward building scalable,
+        professional, and production-ready React applications.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 14 Loaded Successfully");
+</script>
+
+</body>
+</html>
