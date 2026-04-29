@@ -1,6 +1,6 @@
 <!-- ========================= -->
-<!-- BLOG 9 : CONDITIONAL RENDERING -->
-<!-- Save as: blog9.html -->
+<!-- BLOG 8 : EVENT HANDLING IN REACT -->
+<!-- Save as: blog8.html -->
 <!-- ========================= -->
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog 9 - Conditional Rendering</title>
+<title>Blog 8 - Event Handling in React</title>
 
 <style>
 *{
@@ -25,7 +25,7 @@ body{
 }
 
 header{
-    background:#1982c4;
+    background:#6610f2;
     color:white;
     text-align:center;
     padding:30px;
@@ -46,7 +46,7 @@ header h1{
 }
 
 h2{
-    color:#1982c4;
+    color:#6610f2;
     margin:25px 0 15px;
 }
 
@@ -59,7 +59,7 @@ p{
     display:inline-block;
     margin-top:30px;
     text-decoration:none;
-    background:#1982c4;
+    background:#6610f2;
     color:white;
     padding:14px 24px;
     border-radius:8px;
@@ -67,76 +67,63 @@ p{
 }
 
 .back-btn:hover{
-    background:#0f5f92;
+    background:#520dc2;
 }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Conditional Rendering in React</h1>
-    <p>Displaying UI Based on Conditions in React Applications</p>
+    <h1>Event Handling in React</h1>
+    <p>Making React Applications Interactive and User-Friendly</p>
 </header>
 
 <div class="container">
 
-    <h2>Introduction to Conditional Rendering</h2>
+    <h2>Introduction to Event Handling</h2>
 
     <p>
-        Conditional rendering is one of the most useful concepts in React.js.
-        It allows developers to display different user interface elements based on specific conditions.
+        Event handling is one of the most important concepts in React.js because it allows users
+        to interact with the application. Without event handling, a website would only display
+        static content and would not respond to user actions.
     </p>
 
     <p>
-        In real applications, not every user sees the same content.
-        For example, logged-in users see dashboards, while guests see login pages.
-        Admin users see management panels, while normal users see profile pages.
+        Events include actions like clicking a button, typing in an input box,
+        submitting a form, hovering over an image, pressing a keyboard key,
+        or selecting an item from a dropdown menu.
     </p>
 
     <p>
-        React makes this possible using conditional rendering.
-        It helps create dynamic, personalized, and user-friendly applications.
+        React uses event handling to create dynamic and responsive applications
+        like login systems, shopping carts, dashboards, and greeting card websites.
     </p>
 
-    <h2>What is Conditional Rendering?</h2>
+    <h2>What is an Event?</h2>
 
     <p>
-        Conditional rendering means showing different UI elements depending on conditions.
-        It works similarly to JavaScript conditions like if, else, and ternary operators.
-    </p>
-
-    <p>
-        Instead of always displaying the same content,
-        React checks a condition and decides what should appear on the screen.
+        An event is any action performed by the user or browser.
     </p>
 
     <p>
-        This makes applications smart and responsive to user behavior.
-    </p>
-
-    <h2>Why Conditional Rendering is Important</h2>
-
-    <p>
-        Modern applications need different content for different situations.
-    </p>
-
-    <p>
-        Examples include:
-        showing login or logout buttons,
-        displaying loading messages,
-        showing success or error alerts,
-        hiding unavailable products,
-        and displaying admin-only features.
+        Common examples include:
+        button click,
+        form submit,
+        mouse hover,
+        input change,
+        key press,
+        page load,
+        and image selection.
     </p>
 
     <p>
-        Without conditional rendering, applications would feel static and incomplete.
+        React listens for these actions and performs specific tasks based on them.
     </p>
 
-    <h2>Using if Statement</h2>
+    <h2>How React Handles Events</h2>
 
     <p>
-        The simplest way to perform conditional rendering is using the JavaScript if statement.
+        React handles events using camelCase syntax instead of lowercase HTML syntax.
     </p>
 
     <p>
@@ -144,126 +131,71 @@ p{
     </p>
 
     <p>
-        if (isLoggedIn) {
+        HTML:
+        onclick
+    </p>
+
+    <p>
+        React:
+        onClick
+    </p>
+
+    <p>
+        This is an important difference between HTML and React event handling.
+    </p>
+
+    <h2>Simple Button Click Example</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function App() {
         <br>
-        return &lt;h1&gt;Welcome User&lt;/h1&gt;
+        function showMessage() {
         <br>
-        } else {
-        <br>
-        return &lt;h1&gt;Please Login&lt;/h1&gt;
+        alert("Button Clicked");
         <br>
         }
-    </p>
-
-    <p>
-        This is easy to understand and useful for larger conditions.
-    </p>
-
-    <h2>Using Ternary Operator</h2>
-
-    <p>
-        The ternary operator is commonly used for short conditions directly inside JSX.
-    </p>
-
-    <p>
-        Example:
-    </p>
-
-    <p>
-        {isLoggedIn ? &lt;h1&gt;Welcome&lt;/h1&gt; : &lt;h1&gt;Login First&lt;/h1&gt;}
-    </p>
-
-    <p>
-        This is cleaner and widely used in professional React projects.
-    </p>
-
-    <h2>Using Logical AND Operator</h2>
-
-    <p>
-        The logical AND operator (&&) is useful when content should appear only if the condition is true.
-    </p>
-
-    <p>
-        Example:
-    </p>
-
-    <p>
-        {isAdmin && &lt;h1&gt;Admin Panel&lt;/h1&gt;}
-    </p>
-
-    <p>
-        If isAdmin is true, the heading appears.
-        Otherwise, nothing is shown.
-    </p>
-
-    <h2>Using Variables for Conditions</h2>
-
-    <p>
-        Sometimes developers store UI elements inside variables before rendering.
-    </p>
-
-    <p>
-        Example:
-    </p>
-
-    <p>
-        let message;
         <br><br>
-        if (isLoggedIn) {
+        return (
         <br>
-        message = &lt;h1&gt;Welcome Back&lt;/h1&gt;
+        &lt;button onClick={showMessage}&gt;Click Me&lt;/button&gt;
         <br>
-        } else {
-        <br>
-        message = &lt;h1&gt;Please Login&lt;/h1&gt;
+        );
         <br>
         }
     </p>
 
     <p>
-        This keeps JSX cleaner and easier to manage.
+        When the user clicks the button, the function runs automatically.
     </p>
 
-    <h2>Conditional Rendering for Loading State</h2>
+    <h2>Why Event Handling is Important</h2>
 
     <p>
-        When fetching API data, loading messages are commonly shown using conditional rendering.
-    </p>
-
-    <p>
-        Example:
+        Event handling helps applications respond to user actions.
+        It improves user experience and makes websites interactive.
     </p>
 
     <p>
-        {loading ? &lt;h1&gt;Loading...&lt;/h1&gt; : &lt;h1&gt;Data Loaded&lt;/h1&gt;}
+        For example:
+        clicking login,
+        adding products to cart,
+        submitting contact forms,
+        changing themes,
+        and opening blog pages all use event handling.
     </p>
 
     <p>
-        This improves user experience by informing users while data loads.
+        Without events, modern frontend applications would not function properly.
     </p>
 
-    <h2>Conditional Rendering for Errors</h2>
+    <h2>Handling Input Changes</h2>
 
     <p>
-        Error messages can also be displayed conditionally.
-    </p>
-
-    <p>
-        Example:
-    </p>
-
-    <p>
-        {error && &lt;p&gt;Something went wrong&lt;/p&gt;}
-    </p>
-
-    <p>
-        This helps applications handle problems gracefully without crashing.
-    </p>
-
-    <h2>Conditional Rendering in Forms</h2>
-
-    <p>
-        Forms often use conditional rendering for validation messages.
+        React commonly uses the onChange event for form inputs.
     </p>
 
     <p>
@@ -271,55 +203,177 @@ p{
     </p>
 
     <p>
-        {password.length &lt; 6 && &lt;p&gt;Password too short&lt;/p&gt;}
+        const [name, setName] = useState("");
+        <br><br>
+        &lt;input
+        <br>
+        type="text"
+        <br>
+        onChange={(e) =&gt; setName(e.target.value)}
+        <br>
+        /&gt;
     </p>
 
     <p>
-        This helps users understand input errors instantly.
+        This updates the state whenever the user types in the input field.
+    </p>
+
+    <h2>Form Submission Event</h2>
+
+    <p>
+        React uses the onSubmit event for forms.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function handleSubmit(e) {
+        <br>
+        e.preventDefault();
+        <br>
+        alert("Form Submitted");
+        <br>
+        }
+    </p>
+
+    <p>
+        The preventDefault() method stops the page from refreshing automatically.
+    </p>
+
+    <p>
+        This is very important for React forms.
+    </p>
+
+    <h2>Mouse Events in React</h2>
+
+    <p>
+        React supports mouse events like:
+    </p>
+
+    <p>
+        onClick
+        <br>
+        onDoubleClick
+        <br>
+        onMouseOver
+        <br>
+        onMouseOut
+        <br>
+        onMouseEnter
+        <br>
+        onMouseLeave
+    </p>
+
+    <p>
+        These events are useful for tooltips, hover effects, image previews,
+        and interactive UI designs.
+    </p>
+
+    <h2>Keyboard Events in React</h2>
+
+    <p>
+        React also supports keyboard events like:
+    </p>
+
+    <p>
+        onKeyDown
+        <br>
+        onKeyUp
+        <br>
+        onKeyPress
+    </p>
+
+    <p>
+        These are useful for search bars, login forms,
+        and keyboard shortcuts in applications.
+    </p>
+
+    <h2>Passing Arguments in Events</h2>
+
+    <p>
+        Sometimes developers need to pass custom values to event functions.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;button onClick={() =&gt; deleteItem(id)}&gt;
+        Delete
+        &lt;/button&gt;
+    </p>
+
+    <p>
+        This helps perform actions for specific items like deleting products or students.
+    </p>
+
+    <h2>Event Object in React</h2>
+
+    <p>
+        React automatically provides an event object that contains useful information
+        about the event.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function handleClick(event) {
+        <br>
+        console.log(event.target);
+        <br>
+        }
+    </p>
+
+    <p>
+        This helps developers access input values, clicked elements, and more.
     </p>
 
     <h2>Real-World Example</h2>
 
     <p>
         In a bakery management system,
-        if products are out of stock, React can display “Out of Stock” automatically.
+        event handling is used for adding cakes to cart,
+        updating quantity, searching products, and placing orders.
     </p>
 
     <p>
         In a greeting card website,
-        premium templates may only appear for paid users using conditional rendering.
+        users click templates, customize text, upload images,
+        and download cards using event handling.
     </p>
 
     <p>
-        In student portals, different dashboards can appear for students, teachers, and admins.
+        In student portals, login, attendance submission,
+        and profile updates all depend on events.
+    </p>
+
+    <h2>Benefits of Event Handling</h2>
+
+    <p>
+        Event handling provides many advantages:
     </p>
 
     <p>
-        This makes applications smarter and role-based.
-    </p>
-
-    <h2>Benefits of Conditional Rendering</h2>
-
-    <p>
-        Conditional rendering provides many advantages:
-    </p>
-
-    <p>
-        Better personalization
+        Better user interaction
+        <br>
+        Dynamic application behavior
+        <br>
+        Faster UI response
         <br>
         Improved user experience
         <br>
-        Dynamic content display
+        Real-time updates
         <br>
-        Cleaner UI logic
-        <br>
-        Smart application behavior
-        <br>
-        Professional frontend design
+        Professional frontend development
     </p>
 
     <p>
-        These benefits make conditional rendering essential in React development.
+        These benefits make event handling a core part of React development.
     </p>
 
     <h2>Common Beginner Mistakes</h2>
@@ -329,73 +383,71 @@ p{
     </p>
 
     <p>
-        Incorrect ternary syntax
+        Using onclick instead of onClick
         <br>
-        Missing else conditions
+        Calling functions directly instead of passing references
         <br>
-        Using && incorrectly
+        Forgetting preventDefault()
         <br>
-        Returning multiple elements without wrappers
+        Incorrect use of event.target.value
     </p>
 
     <p>
-        Understanding JSX rules clearly helps avoid these common problems.
+        Learning these properly helps avoid major errors in React applications.
     </p>
 
-    <h2>Best Practices for Conditional Rendering</h2>
+    <h2>Best Practices for Event Handling</h2>
 
     <p>
-        Use ternary operators for short conditions only.
-        For large logic, prefer if statements for better readability.
-    </p>
-
-    <p>
-        Keep conditions simple and understandable.
-        Avoid writing too much logic directly inside JSX.
+        Use meaningful function names like handleSubmit, handleLogin, handleDelete
+        instead of generic names.
     </p>
 
     <p>
-        Use clear variable names like isLoggedIn, isAdmin, loading, hasError
-        for better project maintainability.
+        Keep event logic simple and organized.
+        Avoid writing too much code directly inside JSX.
     </p>
 
-    <h2>Conditional Rendering in Job Interviews</h2>
+    <p>
+        Use reusable functions whenever possible for better project structure.
+    </p>
+
+    <h2>Event Handling in Job Interviews</h2>
 
     <p>
-        This is a common React interview topic.
+        Event handling is a common React interview topic.
         Interviewers often ask:
     </p>
 
     <p>
-        What is conditional rendering?
+        Difference between HTML and React event handling?
         <br>
-        Difference between ternary and &&
+        Why use preventDefault()?
         <br>
-        How to show loading state?
+        What is event.target.value?
         <br>
-        How to handle login/logout UI?
+        How to pass arguments in events?
     </p>
 
     <p>
-        Strong understanding helps students perform better in practical coding rounds.
+        Strong understanding helps students perform better in interviews and projects.
     </p>
 
     <h2>Conclusion</h2>
 
     <p>
-        Conditional rendering is one of the most powerful concepts in React.js.
-        It helps applications display the right content at the right time.
+        Event handling is essential for building modern React applications.
+        It allows applications to respond to user actions and creates interactive user experiences.
     </p>
 
     <p>
-        From login systems to admin dashboards,
-        conditional rendering is used everywhere in modern frontend development.
+        From simple button clicks to advanced form systems,
+        event handling is used everywhere in frontend development.
     </p>
 
     <p>
-        Mastering this concept helps developers build smarter,
-        more professional, and user-friendly React applications.
-        It is a key step toward becoming a strong frontend developer.
+        Mastering event handling is an important step in learning React.js.
+        Once it becomes clear, Forms, APIs, Routing, and full frontend projects become much easier to build.
     </p>
 
     <a href="index.html" class="back-btn">← Back to All Blogs</a>
@@ -403,7 +455,7 @@ p{
 </div>
 
 <script>
-console.log("Blog 9 Loaded Successfully");
+console.log("Blog 8 Loaded Successfully");
 </script>
 
 </body>
