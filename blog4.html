@@ -1,0 +1,380 @@
+<!-- ========================= -->
+<!-- BLOG 4 : PROPS AND STATE -->
+<!-- Save as: blog4.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 4 - Props and State</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#dc3545;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#dc3545;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#dc3545;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#b02a37;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Props and State in React</h1>
+    <p>Understanding Data Handling in React Applications</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to Props and State</h2>
+
+    <p>
+        Props and State are two of the most important concepts in React.js. They help developers manage
+        data inside applications and make user interfaces dynamic and interactive.
+    </p>
+
+    <p>
+        React applications are not just static webpages. They change based on user actions like button clicks,
+        form submissions, login actions, shopping carts, and dashboard updates. Props and State make this possible.
+    </p>
+
+    <p>
+        Understanding these two concepts is necessary for building real-world React applications like
+        e-commerce websites, student portals, bakery systems, greeting card websites, and admin dashboards.
+    </p>
+
+    <h2>What are Props?</h2>
+
+    <p>
+        Props stands for Properties. Props are used to pass data from one component to another component.
+        They work like function arguments in JavaScript.
+    </p>
+
+    <p>
+        Usually, data is passed from a parent component to a child component using props.
+        This helps components communicate with each other.
+    </p>
+
+    <p>
+        Props are read-only, which means child components cannot directly change them.
+        They only receive and display the data passed from the parent.
+    </p>
+
+    <h2>Simple Example of Props</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;Student name="Sneha" /&gt;
+    </p>
+
+    <p>
+        Here, "name" is a prop being passed to the Student component.
+        The Student component receives this value and displays it.
+    </p>
+
+    <p>
+        This makes components reusable because the same component can display different data.
+    </p>
+
+    <h2>Why Props are Important</h2>
+
+    <p>
+        Props improve flexibility and reusability in React applications.
+    </p>
+
+    <p>
+        For example, if you create a Product Card component for an online shopping website,
+        you can pass different product names, prices, and images using props instead of writing separate code.
+    </p>
+
+    <p>
+        This reduces duplication and improves project structure.
+    </p>
+
+    <h2>Characteristics of Props</h2>
+
+    <p>
+        Props are read-only.
+        <br>
+        Props are passed from parent to child.
+        <br>
+        Props help components communicate.
+        <br>
+        Props improve reusability.
+        <br>
+        Props cannot be directly modified by child components.
+    </p>
+
+    <p>
+        These features make props simple but very powerful in React development.
+    </p>
+
+    <h2>What is State?</h2>
+
+    <p>
+        State is used to manage dynamic data inside a component.
+        Unlike props, state can change during runtime.
+    </p>
+
+    <p>
+        State is mainly used when something in the UI changes because of user interaction.
+        Examples include counters, login forms, dark mode toggles, shopping carts, and search filters.
+    </p>
+
+    <p>
+        State helps create interactive applications where data changes based on user actions.
+    </p>
+
+    <h2>Simple Example of State</h2>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        const [count, setCount] = useState(0);
+    </p>
+
+    <p>
+        Here, "count" stores the current value and "setCount" updates it.
+        This is commonly used in counters, buttons, and form inputs.
+    </p>
+
+    <p>
+        State makes the application responsive and dynamic.
+    </p>
+
+    <h2>Why State is Important</h2>
+
+    <p>
+        Without state, React applications would only display fixed content.
+        State allows content to update automatically whenever data changes.
+    </p>
+
+    <p>
+        For example, when a student logs into a portal, the dashboard changes.
+        When a user adds products to a cart, the cart count updates instantly.
+    </p>
+
+    <p>
+        This dynamic behavior is controlled using state.
+    </p>
+
+    <h2>Characteristics of State</h2>
+
+    <p>
+        State is mutable.
+        <br>
+        State belongs to a component.
+        <br>
+        State controls dynamic data.
+        <br>
+        State triggers re-rendering when updated.
+        <br>
+        State improves user interaction.
+    </p>
+
+    <p>
+        These features make state the heart of interactive applications.
+    </p>
+
+    <h2>Difference Between Props and State</h2>
+
+    <p>
+        Props are passed from parent to child, while state is managed inside the component itself.
+    </p>
+
+    <p>
+        Props are read-only, but state can be updated.
+    </p>
+
+    <p>
+        Props help communication between components, while state manages internal component behavior.
+    </p>
+
+    <p>
+        Props are external data, while state is internal data.
+    </p>
+
+    <p>
+        Both work together to create powerful React applications.
+    </p>
+
+    <h2>Props and State Together</h2>
+
+    <p>
+        In real projects, props and state are often used together.
+    </p>
+
+    <p>
+        Example:
+        A parent component stores user information in state and passes it to child components using props.
+    </p>
+
+    <p>
+        This creates a smooth data flow and improves application structure.
+    </p>
+
+    <h2>Real-World Example</h2>
+
+    <p>
+        In a bakery management system:
+    </p>
+
+    <p>
+        Product details like cake name and price can be passed using props.
+        Cart quantity and total bill can be managed using state.
+    </p>
+
+    <p>
+        In a greeting card website:
+        Card templates can use props, while user customization options can use state.
+    </p>
+
+    <p>
+        This makes the application flexible and user-friendly.
+    </p>
+
+    <h2>State Updates in React</h2>
+
+    <p>
+        State should never be updated directly.
+        React provides special functions like setState() or useState setter functions for updates.
+    </p>
+
+    <p>
+        Wrong:
+        <br>
+        count = count + 1
+    </p>
+
+    <p>
+        Correct:
+        <br>
+        setCount(count + 1)
+    </p>
+
+    <p>
+        This ensures React updates the UI properly.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often confuse props and state.
+        Some common mistakes include:
+    </p>
+
+    <p>
+        Trying to modify props directly
+        <br>
+        Updating state incorrectly
+        <br>
+        Forgetting that state changes trigger re-rendering
+        <br>
+        Passing unnecessary props
+    </p>
+
+    <p>
+        Learning these concepts clearly helps avoid major development issues later.
+    </p>
+
+    <h2>Best Practices</h2>
+
+    <p>
+        Keep state only where necessary.
+        Avoid storing too much data in one component.
+    </p>
+
+    <p>
+        Use props for communication and state for interaction.
+        Keep data flow simple and predictable.
+    </p>
+
+    <p>
+        Use meaningful variable names like userName, cartCount, studentData instead of generic names.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        Props and State are the backbone of React.js applications.
+        Props help components communicate, while state helps components manage changing data.
+    </p>
+
+    <p>
+        Together, they create dynamic, interactive, and professional web applications.
+    </p>
+
+    <p>
+        Mastering props and state is a major step toward becoming a strong React developer.
+        Once these concepts are clear, Hooks, Forms, Routing, and API integration become much easier to understand.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 4 Loaded Successfully");
+</script>
+
+</body>
+</html>
