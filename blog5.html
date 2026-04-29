@@ -1,0 +1,403 @@
+<!-- ========================= -->
+<!-- BLOG 5 : REACT HOOKS -->
+<!-- Save as: blog5.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 5 - React Hooks</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#fd7e14;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#fd7e14;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#fd7e14;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#d96a0b;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>React Hooks</h1>
+    <p>Understanding Modern State and Lifecycle Management in React</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to React Hooks</h2>
+
+    <p>
+        React Hooks are one of the most important features introduced in React.js.
+        They were added in React version 16.8 and changed the way developers build React applications.
+    </p>
+
+    <p>
+        Before Hooks, developers mainly used Class Components for managing state and lifecycle methods.
+        Functional Components were simple and mainly used for displaying UI only.
+    </p>
+
+    <p>
+        Hooks solved this limitation by allowing Functional Components to use state,
+        lifecycle features, and other advanced React capabilities without using classes.
+    </p>
+
+    <h2>Why Hooks Were Introduced</h2>
+
+    <p>
+        Class components were powerful, but they often became difficult to manage in large applications.
+        Lifecycle methods were spread across different sections, making code harder to understand.
+    </p>
+
+    <p>
+        Hooks made React code simpler, cleaner, and easier to maintain by allowing developers
+        to write everything inside Functional Components.
+    </p>
+
+    <p>
+        This improved readability, reduced complexity, and made React development more modern and efficient.
+    </p>
+
+    <h2>What is a Hook?</h2>
+
+    <p>
+        A Hook is a special function in React that lets developers use React features
+        like state and lifecycle methods inside Functional Components.
+    </p>
+
+    <p>
+        Hooks always start with the word "use", such as:
+    </p>
+
+    <p>
+        useState
+        <br>
+        useEffect
+        <br>
+        useContext
+        <br>
+        useRef
+        <br>
+        useMemo
+        <br>
+        useCallback
+    </p>
+
+    <p>
+        Each Hook has a specific purpose and helps manage different parts of an application.
+    </p>
+
+    <h2>Most Commonly Used Hooks</h2>
+
+    <p>
+        The two most commonly used Hooks are:
+    </p>
+
+    <p>
+        1. useState
+        <br>
+        2. useEffect
+    </p>
+
+    <p>
+        These two Hooks are used in almost every React project and are the foundation of modern React development.
+    </p>
+
+    <h2>useState Hook</h2>
+
+    <p>
+        The useState Hook is used to create and manage state inside Functional Components.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        const [count, setCount] = useState(0);
+    </p>
+
+    <p>
+        Here:
+        <br>
+        count = current value
+        <br>
+        setCount = function to update value
+        <br>
+        0 = initial value
+    </p>
+
+    <p>
+        This is commonly used for counters, forms, toggles, shopping carts, and interactive UI elements.
+    </p>
+
+    <h2>useEffect Hook</h2>
+
+    <p>
+        The useEffect Hook is used for side effects in React applications.
+    </p>
+
+    <p>
+        Side effects include:
+        API calls,
+        data fetching,
+        timers,
+        subscriptions,
+        updating the DOM,
+        and event listeners.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        useEffect(() =&gt; {
+        <br>
+        console.log("Component Loaded");
+        <br>
+        }, []);
+    </p>
+
+    <p>
+        This runs when the component loads for the first time.
+    </p>
+
+    <h2>Rules of Hooks</h2>
+
+    <p>
+        React Hooks must follow certain rules.
+    </p>
+
+    <p>
+        Rule 1:
+        Hooks must only be called at the top level of the component.
+        They should not be used inside loops, conditions, or nested functions.
+    </p>
+
+    <p>
+        Rule 2:
+        Hooks must only be called inside React Functional Components or Custom Hooks.
+    </p>
+
+    <p>
+        Following these rules ensures React works correctly and avoids errors.
+    </p>
+
+    <h2>Benefits of Hooks</h2>
+
+    <p>
+        Hooks provide many advantages in React development.
+    </p>
+
+    <p>
+        Cleaner code
+        <br>
+        Easier state management
+        <br>
+        Better code reuse
+        <br>
+        Reduced complexity
+        <br>
+        No need for class components
+        <br>
+        Improved readability
+    </p>
+
+    <p>
+        These benefits make Hooks one of the best improvements in modern React.js.
+    </p>
+
+    <h2>Functional Components vs Class Components</h2>
+
+    <p>
+        Before Hooks, Class Components were required for state management.
+        Today, Functional Components with Hooks are preferred in most projects.
+    </p>
+
+    <p>
+        Functional Components are shorter, cleaner, and easier to understand.
+        They also avoid complex concepts like "this" keyword and lifecycle confusion.
+    </p>
+
+    <p>
+        This is why most companies now use Hooks-based development.
+    </p>
+
+    <h2>Custom Hooks</h2>
+
+    <p>
+        React also allows developers to create their own Hooks called Custom Hooks.
+    </p>
+
+    <p>
+        Custom Hooks help reuse logic across multiple components.
+        Instead of writing the same code repeatedly, developers can create reusable Hook functions.
+    </p>
+
+    <p>
+        Example:
+        useFetchData(),
+        useAuth(),
+        useFormValidation()
+    </p>
+
+    <p>
+        This improves project organization and reduces duplication.
+    </p>
+
+    <h2>Real-World Example of Hooks</h2>
+
+    <p>
+        In a bakery management system:
+        useState can manage cart quantity,
+        while useEffect can fetch product data from the server.
+    </p>
+
+    <p>
+        In a greeting card website:
+        useState can handle user customization,
+        while useEffect can load saved templates from an API.
+    </p>
+
+    <p>
+        Hooks make real-world projects dynamic and interactive.
+    </p>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <p>
+        Beginners often make mistakes like:
+    </p>
+
+    <p>
+        Using Hooks inside loops
+        <br>
+        Forgetting dependency arrays in useEffect
+        <br>
+        Updating state incorrectly
+        <br>
+        Confusing useState and useEffect
+    </p>
+
+    <p>
+        Understanding Hook rules clearly helps avoid these problems.
+    </p>
+
+    <h2>Best Practices for Hooks</h2>
+
+    <p>
+        Keep Hooks simple and focused.
+        Do not place too much logic inside one Hook.
+    </p>
+
+    <p>
+        Use Custom Hooks for reusable logic.
+        Keep dependency arrays correct in useEffect.
+    </p>
+
+    <p>
+        Use meaningful variable names like cartCount, userData, studentList instead of generic names.
+    </p>
+
+    <p>
+        These practices improve code quality and project maintainability.
+    </p>
+
+    <h2>Hooks in Industry Projects</h2>
+
+    <p>
+        Large companies like Facebook, Netflix, Airbnb, and Instagram use Hooks heavily in modern React development.
+    </p>
+
+    <p>
+        Hooks are used in dashboards, admin panels, e-commerce platforms,
+        student portals, hospital systems, and mobile applications.
+    </p>
+
+    <p>
+        Learning Hooks is necessary for frontend job interviews and professional development.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        React Hooks transformed frontend development by making Functional Components powerful and flexible.
+        They replaced much of the complexity of Class Components and improved developer productivity.
+    </p>
+
+    <p>
+        Hooks like useState and useEffect are now essential for building modern React applications.
+    </p>
+
+    <p>
+        Mastering Hooks is a major step toward becoming a strong React developer.
+        Once Hooks become clear, advanced concepts like Context API, Redux, Routing,
+        and Performance Optimization become much easier to learn.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 5 Loaded Successfully");
+</script>
+
+</body>
+</html>
