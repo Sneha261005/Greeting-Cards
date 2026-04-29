@@ -1,0 +1,401 @@
+<!-- ========================= -->
+<!-- BLOG 2 : COMPONENTS IN REACT -->
+<!-- Save as: blog2.html -->
+<!-- ========================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog 2 - Components in React</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+    line-height:1.8;
+}
+
+header{
+    background:#198754;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:36px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#198754;
+    margin:25px 0 15px;
+}
+
+p{
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:30px;
+    text-decoration:none;
+    background:#198754;
+    color:white;
+    padding:14px 24px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#146c43;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Components in React</h1>
+    <p>Understanding the Building Blocks of React Applications</p>
+</header>
+
+<div class="container">
+
+    <h2>Introduction to Components</h2>
+
+    <p>
+        Components are the most important concept in React.js. They are the building blocks of every React application.
+        A component is an independent, reusable piece of code that controls a part of the user interface.
+    </p>
+
+    <p>
+        Instead of building an entire webpage in one large file, React allows developers to divide the UI into smaller,
+        manageable sections called components. For example, a navbar, footer, login form, product card,
+        sidebar, and profile section can all be separate components.
+    </p>
+
+    <p>
+        This approach makes development easier, improves code organization, and helps in maintaining large applications.
+        Components are one of the biggest reasons why React is powerful and widely used in frontend development.
+    </p>
+
+    <h2>Why Components are Important</h2>
+
+    <p>
+        In traditional web development, developers often repeat the same HTML and JavaScript code multiple times.
+        This increases code duplication and makes maintenance difficult.
+    </p>
+
+    <p>
+        React solves this problem using reusable components. Once a component is created,
+        it can be used multiple times throughout the application.
+    </p>
+
+    <p>
+        For example, if you create a product card component for an e-commerce website,
+        the same component can display hundreds of products by simply changing the data.
+    </p>
+
+    <p>
+        This saves time, improves consistency, and makes the project much more scalable.
+    </p>
+
+    <h2>Real-Life Example of Components</h2>
+
+    <p>
+        Imagine building a college website. Instead of writing everything in one file,
+        you can divide it into separate components like:
+    </p>
+
+    <p>
+        Header Component – displays logo and title
+        <br>
+        Navbar Component – displays menu links
+        <br>
+        Hero Section Component – displays welcome banner
+        <br>
+        Courses Component – displays available courses
+        <br>
+        Footer Component – displays contact details
+    </p>
+
+    <p>
+        Each section works independently and can be updated without affecting the entire website.
+    </p>
+
+    <h2>Types of Components in React</h2>
+
+    <p>
+        React mainly provides two types of components:
+    </p>
+
+    <p>
+        1. Functional Components
+        <br>
+        2. Class Components
+    </p>
+
+    <p>
+        Both are used to create UI elements, but functional components are more commonly used today
+        because they are simpler and support Hooks.
+    </p>
+
+    <h2>Functional Components</h2>
+
+    <p>
+        Functional components are JavaScript functions that return JSX (HTML-like code).
+        They are simple, easy to write, and preferred in modern React development.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        function Welcome() {
+        <br>
+        return &lt;h1&gt;Welcome to React&lt;/h1&gt;
+        <br>
+        }
+    </p>
+
+    <p>
+        This component simply displays a heading. Functional components are clean and easier to understand.
+    </p>
+
+    <h2>Class Components</h2>
+
+    <p>
+        Class components are older React components created using ES6 JavaScript classes.
+        They were commonly used before Hooks were introduced.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        class Welcome extends React.Component {
+        <br>
+        render() {
+        <br>
+        return &lt;h1&gt;Welcome to React&lt;/h1&gt;
+        <br>
+        }
+        <br>
+        }
+    </p>
+
+    <p>
+        Class components support lifecycle methods and state management,
+        but they are more complex compared to functional components.
+    </p>
+
+    <h2>Reusable Components</h2>
+
+    <p>
+        One of the biggest advantages of components is reusability.
+    </p>
+
+    <p>
+        Suppose you create a button component once. Instead of rewriting button code
+        every time, you can reuse the same component across the entire application.
+    </p>
+
+    <p>
+        This improves consistency and saves development time.
+        Reusable components are very useful in large applications like e-commerce platforms and admin dashboards.
+    </p>
+
+    <h2>Nested Components</h2>
+
+    <p>
+        React components can be nested inside other components.
+        This means one component can contain another component inside it.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        App Component
+        <br>
+        ├── Header Component
+        <br>
+        ├── Main Content Component
+        <br>
+        └── Footer Component
+    </p>
+
+    <p>
+        This creates a structured and organized application design.
+    </p>
+
+    <h2>Props in Components</h2>
+
+    <p>
+        Props stand for Properties. They are used to pass data from one component to another.
+    </p>
+
+    <p>
+        For example, if you have a Student Card component,
+        you can pass different student names using props.
+    </p>
+
+    <p>
+        Example:
+    </p>
+
+    <p>
+        &lt;Student name="Sneha" /&gt;
+    </p>
+
+    <p>
+        Props make components dynamic and flexible.
+    </p>
+
+    <h2>State in Components</h2>
+
+    <p>
+        State is used to manage dynamic data inside a component.
+        Unlike props, state can change during runtime.
+    </p>
+
+    <p>
+        Examples include counters, login forms, shopping carts,
+        toggles, and user input fields.
+    </p>
+
+    <p>
+        State helps create interactive and responsive applications.
+    </p>
+
+    <h2>Component Lifecycle</h2>
+
+    <p>
+        Every component goes through a lifecycle:
+    </p>
+
+    <p>
+        Mounting – component is created
+        <br>
+        Updating – component data changes
+        <br>
+        Unmounting – component is removed
+    </p>
+
+    <p>
+        In class components, lifecycle methods manage these stages.
+        In functional components, useEffect Hook handles lifecycle behavior.
+    </p>
+
+    <h2>Benefits of Components</h2>
+
+    <p>
+        Components offer many advantages:
+    </p>
+
+    <p>
+        Better code organization
+        <br>
+        Reusability
+        <br>
+        Easier debugging
+        <br>
+        Faster development
+        <br>
+        Improved scalability
+        <br>
+        Team collaboration becomes easier
+    </p>
+
+    <p>
+        These benefits make React development much more professional and efficient.
+    </p>
+
+    <h2>Components in Real Projects</h2>
+
+    <p>
+        In real-world projects like bakery systems, hospital management systems,
+        student portals, and greeting card websites, components play a major role.
+    </p>
+
+    <p>
+        For example, in a greeting card website:
+        Card Template Component,
+        Category Component,
+        Blog Section Component,
+        Contact Form Component,
+        and Payment Section Component can all be separate reusable components.
+    </p>
+
+    <p>
+        This improves project structure and simplifies future updates.
+    </p>
+
+    <h2>Best Practices for Components</h2>
+
+    <p>
+        Developers should keep components small and focused.
+        One component should perform one main task.
+    </p>
+
+    <p>
+        Use meaningful component names like Header, Footer, ProductCard instead of generic names.
+    </p>
+
+    <p>
+        Avoid making components too large because large components become difficult to manage.
+    </p>
+
+    <p>
+        Reuse components whenever possible and keep the project folder structure clean.
+    </p>
+
+    <h2>Conclusion</h2>
+
+    <p>
+        Components are the foundation of React.js. They make frontend development faster,
+        cleaner, and more scalable.
+    </p>
+
+    <p>
+        By dividing the UI into reusable sections, developers can build professional applications
+        with better performance and easier maintenance.
+    </p>
+
+    <p>
+        Understanding components is the first major step toward mastering React.js.
+        Once components become clear, learning Props, State, Hooks, and Routing becomes much easier.
+    </p>
+
+    <a href="index.html" class="back-btn">← Back to All Blogs</a>
+
+</div>
+
+<script>
+console.log("Blog 2 Loaded Successfully");
+</script>
+
+</body>
+</html>
